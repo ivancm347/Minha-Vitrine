@@ -1,49 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Vitrine Oficial - Ivan C Melo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITRINE OFICIAL IVAN C MELO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#fff;font-family:system-ui}
-.header{background:linear-gradient(90deg,#fe2c55,#25f4ee);padding:24px;text-align:center}
-.header h1{font-size:24px;font-weight:900}.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{background:#151515;border:1px solid #222;border-radius:16px;overflow:hidden}
-.thumb{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;position:relative}
-.thumb img{max-width:90%;max-height:90%;object-fit:contain}
-.badge{position:absolute;top:8px;left:8px;background:#fe2c55;color:#fff;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:800}
-.info{padding:12px} .nome{font-weight:700;min-height:38px} .preco{color:#25f4ee;font-weight:900;font-size:20px;margin:6px 0}
-.btn{display:block;text-align:center;padding:11px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:8px}
-.tk{background:#fe2c55;color:#fff} .ml{background:#ffe600;color:#000} .code{background:#222;color:#aaa;font-size:11px;padding:6px;border-radius:8px;text-align:center;margin-top:6px}
-.footer{text-align:center;color:#666;padding:24px;font-size:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:Inter,system-ui,-apple-system,sans-serif;min-height:100vh}
+.header{background:linear-gradient(90deg,#fe2c55 0%,#ff3d6b 25%,#25f4ee 100%);padding:18px 16px;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.header h1{font-weight:900;letter-spacing:-.02em;font-size:clamp(18px,4vw,28px);line-height:1;color:#fff;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+.header .sub{margin-top:6px;font-weight:800;font-size:13px;letter-spacing:.08em;color:#000;opacity:.9}
+.header .sub a{color:#000;text-decoration:none;border-bottom:1.5px solid #000}
+.grid{max-width:1280px;margin:0 auto;padding:20px 14px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:#151515;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.15)}
+.img-box{aspect-ratio:1/1;background:#0f0f0f;position:relative;overflow:hidden}
+.img-box img{width:100%;height:100%;object-fit:cover;display:block}
+.img-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#151515;color:#555;font-weight:800;padding:20px;text-align:center}
+.info{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cat{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#888;font-weight:700}
+.info h3{font-size:17px;font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.desc{font-size:12.5px;color:#aaa;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.preco{font-size:22px;font-weight:900;color:#25f4ee;letter-spacing:-.02em;margin-top:2px}
+.ml-code{font-size:11px;color:#ffe600;background:rgba(255,230,0,.12);border:1px dashed rgba(255,230,0,.3);padding:6px 8px;border-radius:8px;width:fit-content}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.btn{flex:1;min-width:110px;text-align:center;padding:12px 12px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none;transition:transform .15s,filter .15s}
+.btn:active{transform:scale(.98)}
+.btn-tiktok{background:#fe2c55;color:#fff;box-shadow:0 6px 18px rgba(254,44,85,.35)}
+.btn-ml{background:#ffe600;color:#111;box-shadow:0 6px 18px rgba(255,230,0,.25)}
+.btn-shopee{background:#ee4d2d;color:#fff}
+.footer{max-width:1280px;margin:0 auto;padding:20px 14px 30px;text-align:center;color:#666;font-size:11px;letter-spacing:.06em}
+.footer a{color:#888}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:10px;padding:12px 10px 30px}.info{padding:10px}.info h3{font-size:14px}.preco{font-size:18px}.btn{padding:10px 8px;font-size:11px;min-width:0}}
 </style>
 </head>
 <body>
-<div class="header"><h1>VITRINE OFICIAL • IVAN C MELO</h1><p>@ivan_c_melo • 4 produtos • TikTok Shop + Mercado Livre</p></div>
-<div class="grid" id="g"></div>
-<div class="footer">ivancm347.github.io/Minha-Vitrine • Código ML: WPNN5W-3R8V</div>
-<script>
-const produtos = [{"id": "auto_ryoku", "nome": "Chave de impacto Ryoku", "preco": "R$ 230,00", "categoria": "Ferramentas", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1734498300958050085?_t=ZS-9ADVkI84UAH", "shopee": "", "mercado_livre": ""}, "imagem": "chave_de_impacto_ryoku.jpg", "imagem_transparente": "chave_de_impacto_ryoku.jpg", "badge": "Novo", "descricao": "Chave de impacto Ryoku potente para mecânica"}, {"id": "1735385374513988883", "nome": "Kit Microfone Condensador BM800 + Placa de Som V8 + Braço Articulado", "preco": "R$ 129,90", "link": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "shopee": "", "mercado_livre": ""}, "imagem": "kit_microfone_transparente.png", "imagem_transparente": "kit_microfone_transparente.png", "badge": "Mais Vendido", "categoria": "Audio / Podcast / Live"}, {"id": "1735440614844172013", "nome": "Microfone de Lapela Sem Fio α'GOLD Pro - Áudio Nítido", "preco": "R$ 89,90", "link": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "shopee": "", "mercado_livre": ""}, "imagem": "lapela_alpha_gold_transparente_final.png", "imagem_transparente": "lapela_alpha_gold_transparente_final.png", "badge": "Afiliado", "categoria": "Audio / Lapela"}, {"id": "1733726957123503408", "nome": "Furadeira Parafusadeira Sem Fio Hanabi CY-3006 12V - com Caixa", "preco": "R$ 149,90", "link": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "link_afiliado": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "shopee": "", "mercado_livre": "https://meli.la/2MoxWGy"}, "mercado_livre": "https://meli.la/2MoxWGy", "codigo_ml": "WPNN5W-3R8V", "codigo_busca_ml": "WPNN5W-3R8V", "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_transparente": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_original": "photo8429648105038713883.jpeg", "badge": "Ferramentas • 2 Baterias", "categoria": "Ferramentas"}];
-const grid=document.getElementById('g');
-function imgHTML(f){
-  if(!f) return '<div style="font-size:50px">🔧</div>';
-  return `<img src="./${f}" alt="" onerror="this.onerror=null; this.src='./imagens/${f}'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}"><div style="display:none;font-size:50px;justify-content:center;align-items:center;color:#333">🔧</div>`;
-}
-produtos.forEach(p=>{
-  const d=document.createElement('div'); d.className='card';
-  const tk = p.links?.tiktok || p.link || p.link_afiliado;
-  const ml = p.links?.mercado_livre || p.mercado_livre;
-  d.innerHTML=`
-    <div class="thumb"><span class="badge">${p.badge||p.categoria||'Produto'}</span>${imgHTML(p.imagem||p.imagem_transparente)}</div>
-    <div class="info">
-      <div class="nome">${p.nome}</div>
-      <div class="preco">${p.preco}</div>
-      ${p.codigo_ml?`<div class="code">🔍 ${p.codigo_ml}</div>`:''}
-      ${tk?`<a class="btn tk" href="${tk}" target="_blank">🛒 TikTok Shop</a>`:''}
-      ${ml?`<a class="btn ml" href="${ml}" target="_blank">💛 Mercado Livre</a>`:''}
-    </div>`;
-  grid.appendChild(d);
-});
-</script>
+<header class="header">
+  <h1>VITRINE OFICIAL IVAN C MELO</h1>
+  <div class="sub"><a href="https://www.tiktok.com/@ivan_c_melo" target="_blank">@ivan_c_melo</a> • 4 PRODUTOS • LINK NA BIO</div>
+</header>
+<main class="grid">
+
+      <article class="card">
+        <div class="img-box">
+          <img src="chave-de-impacto-ryoku.jpg" alt="Chave Ryoku" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='./imagens/'+this.src.split('/').pop();}else if(this.dataset.f==1){this.dataset.f=2;this.src='./imagens/'+this.src.split('/').pop().toLowerCase();}else{this.style.display='none'; this.nextElementSibling.style.display='flex'}">
+          <div class="img-fallback">Chave Ryoku</div>
+        </div>
+        <div class="info">
+          <span class="cat">Ferramentas</span>
+          <h3>Chave Ryoku</h3>
+          <p class="desc">Chave de impacto Ryoku 320Nm - Alta performance profissional</p>
+          <div class="preco">R$ 230,00</div>
+          
+          <div class="actions">
+            <a href="https://www.tiktok.com/@ivan_c_melo" target="_blank" rel="noopener" class="btn btn-tiktok">TikTok Shop</a>
+            <a href="https://s.shopee.com.br/9zyCqgAqez" target="_blank" rel="noopener" class="btn btn-shopee">Shopee</a>
+          </div>
+          
+          
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="img-box">
+          <img src="./kit-bm800.jpg" alt="Kit BM800" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='./imagens/'+this.src.split('/').pop();}else if(this.dataset.f==1){this.dataset.f=2;this.src='./imagens/'+this.src.split('/').pop().toLowerCase();}else{this.style.display='none'; this.nextElementSibling.style.display='flex'}">
+          <div class="img-fallback">Kit BM800</div>
+        </div>
+        <div class="info">
+          <span class="cat">Áudio</span>
+          <h3>Kit BM800</h3>
+          <p class="desc">Microfone condensador BM800 + placa + suporte completo</p>
+          <div class="preco">R$ 129,90</div>
+          
+          <div class="actions">
+            <a href="https://www.tiktok.com/@ivan_c_melo" target="_blank" rel="noopener" class="btn btn-tiktok">TikTok Shop</a>
+            
+          </div>
+          
+          
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="img-box">
+          <img src="./lapela-gold.jpg" alt="Lapela Gold" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='./imagens/'+this.src.split('/').pop();}else if(this.dataset.f==1){this.dataset.f=2;this.src='./imagens/'+this.src.split('/').pop().toLowerCase();}else{this.style.display='none'; this.nextElementSibling.style.display='flex'}">
+          <div class="img-fallback">Lapela Gold</div>
+        </div>
+        <div class="info">
+          <span class="cat">Áudio</span>
+          <h3>Lapela Gold</h3>
+          <p class="desc">Microfone de lapela Gold sem fio - Qualidade premium</p>
+          <div class="preco">R$ 89,90</div>
+          
+          <div class="actions">
+            <a href="https://www.tiktok.com/@ivan_c_melo" target="_blank" rel="noopener" class="btn btn-tiktok">TikTok Shop</a>
+            
+          </div>
+          
+          
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="img-box">
+          <img src="./furadeira-hanabi.jpg" alt="Furadeira Hanabi" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='./imagens/'+this.src.split('/').pop();}else if(this.dataset.f==1){this.dataset.f=2;this.src='./imagens/'+this.src.split('/').pop().toLowerCase();}else{this.style.display='none'; this.nextElementSibling.style.display='flex'}">
+          <div class="img-fallback">Furadeira Hanabi</div>
+        </div>
+        <div class="info">
+          <span class="cat">Ferramentas</span>
+          <h3>Furadeira Hanabi</h3>
+          <p class="desc">Furadeira parafusadeira Hanabi - Com maleta e acessórios</p>
+          <div class="preco">R$ 149,90</div>
+          <div class="ml-code">Código: WPNN5W-3R8V</div>
+          <div class="actions">
+            <a href="https://www.tiktok.com/@ivan_c_melo" target="_blank" rel="noopener" class="btn btn-tiktok">TikTok Shop</a>
+            <a href="https://meli.la/2MoxWGy" target="_blank" rel="noopener" class="btn btn-ml">ML • WPNN5W-3R8V</a>
+          </div>
+          
+          
+        </div>
+      </article>
+</main>
+<footer class="footer">
+  Vitrine oficial • Imagens tentam ./ e ./imagens/ • Pronto para ivancm347.github.io/Minha-Vitrine • Gerado em 02/10/2026, 19:05:49
+</footer>
 </body>
 </html>
