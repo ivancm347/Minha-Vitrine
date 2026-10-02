@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Vitrine Oficial - Ivan C Melo</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#fff;font-family:system-ui}
+.header{background:linear-gradient(90deg,#fe2c55,#25f4ee);padding:24px;text-align:center}
+.header h1{font-size:24px;font-weight:900}.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#151515;border:1px solid #222;border-radius:16px;overflow:hidden}
+.thumb{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;position:relative}
+.thumb img{max-width:90%;max-height:90%;object-fit:contain}
+.badge{position:absolute;top:8px;left:8px;background:#fe2c55;color:#fff;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:800}
+.info{padding:12px} .nome{font-weight:700;min-height:38px} .preco{color:#25f4ee;font-weight:900;font-size:20px;margin:6px 0}
+.btn{display:block;text-align:center;padding:11px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:8px}
+.tk{background:#fe2c55;color:#fff} .ml{background:#ffe600;color:#000} .code{background:#222;color:#aaa;font-size:11px;padding:6px;border-radius:8px;text-align:center;margin-top:6px}
+.footer{text-align:center;color:#666;padding:24px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="header"><h1>VITRINE OFICIAL • IVAN C MELO</h1><p>@ivan_c_melo • 4 produtos • TikTok Shop + Mercado Livre</p></div>
+<div class="grid" id="g"></div>
+<div class="footer">ivancm347.github.io/Minha-Vitrine • Código ML: WPNN5W-3R8V</div>
+<script>
+const produtos = [{"id": "auto_ryoku", "nome": "Chave de impacto Ryoku", "preco": "R$ 230,00", "categoria": "Ferramentas", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1734498300958050085?_t=ZS-9ADVkI84UAH", "shopee": "", "mercado_livre": ""}, "imagem": "chave_de_impacto_ryoku.jpg", "imagem_transparente": "chave_de_impacto_ryoku.jpg", "badge": "Novo", "descricao": "Chave de impacto Ryoku potente para mecânica"}, {"id": "1735385374513988883", "nome": "Kit Microfone Condensador BM800 + Placa de Som V8 + Braço Articulado", "preco": "R$ 129,90", "link": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "shopee": "", "mercado_livre": ""}, "imagem": "kit_microfone_transparente.png", "imagem_transparente": "kit_microfone_transparente.png", "badge": "Mais Vendido", "categoria": "Audio / Podcast / Live"}, {"id": "1735440614844172013", "nome": "Microfone de Lapela Sem Fio α'GOLD Pro - Áudio Nítido", "preco": "R$ 89,90", "link": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "shopee": "", "mercado_livre": ""}, "imagem": "lapela_alpha_gold_transparente_final.png", "imagem_transparente": "lapela_alpha_gold_transparente_final.png", "badge": "Afiliado", "categoria": "Audio / Lapela"}, {"id": "1733726957123503408", "nome": "Furadeira Parafusadeira Sem Fio Hanabi CY-3006 12V - com Caixa", "preco": "R$ 149,90", "link": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "link_afiliado": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "shopee": "", "mercado_livre": "https://meli.la/2MoxWGy"}, "mercado_livre": "https://meli.la/2MoxWGy", "codigo_ml": "WPNN5W-3R8V", "codigo_busca_ml": "WPNN5W-3R8V", "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_transparente": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_original": "photo8429648105038713883.jpeg", "badge": "Ferramentas • 2 Baterias", "categoria": "Ferramentas"}];
+const grid=document.getElementById('g');
+function imgHTML(f){
+  if(!f) return '<div style="font-size:50px">🔧</div>';
+  return `<img src="./${f}" alt="" onerror="this.onerror=null; this.src='./imagens/${f}'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}"><div style="display:none;font-size:50px;justify-content:center;align-items:center;color:#333">🔧</div>`;
+}
+produtos.forEach(p=>{
+  const d=document.createElement('div'); d.className='card';
+  const tk = p.links?.tiktok || p.link || p.link_afiliado;
+  const ml = p.links?.mercado_livre || p.mercado_livre;
+  d.innerHTML=`
+    <div class="thumb"><span class="badge">${p.badge||p.categoria||'Produto'}</span>${imgHTML(p.imagem||p.imagem_transparente)}</div>
+    <div class="info">
+      <div class="nome">${p.nome}</div>
+      <div class="preco">${p.preco}</div>
+      ${p.codigo_ml?`<div class="code">🔍 ${p.codigo_ml}</div>`:''}
+      ${tk?`<a class="btn tk" href="${tk}" target="_blank">🛒 TikTok Shop</a>`:''}
+      ${ml?`<a class="btn ml" href="${ml}" target="_blank">💛 Mercado Livre</a>`:''}
+    </div>`;
+  grid.appendChild(d);
+});
+</script>
+</body>
+</html>
