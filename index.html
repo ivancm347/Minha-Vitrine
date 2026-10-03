@@ -3,102 +3,247 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Furadeira Hanabi 12V + Pinador INGCO + Kit BM800 | Vitrine Ivan C Melo @ivan_c_melo</title>
-<meta name="description" content="Vitrine Oficial Ivan C Melo - 5 produtos: Pinador INGCO, Chave Ryoku R$230, Kit BM800 R$129,90, Lapela Gold R$89,90, Furadeira Hanabi R$149,90 codigo WPNN5W-3R8V"/>
-<meta property="og:url" content="https://ivancm347.github.io/Minha-Vitrine/"/>
+<title>VITRINE IVAN C MELO | @ivan_c_melo - Ferramentas & Audio</title>
+<meta name="description" content="Vitrine oficial IVAN C MELO - Ferramentas profissionais e Audio com os melhores preços"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#fff;font-family:Inter,system-ui}
-.banner{background:#ffe600;color:#000;text-align:center;padding:10px 14px;font-weight:800;font-size:13px;position:relative}
-.banner b{background:#000;color:#ffe600;padding:2px 8px;border-radius:6px;margin:0 4px}
-.banner .close{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;font-weight:900;padding:0 8px}
-.header{background:linear-gradient(90deg,#fe2c55,#25f4ee);padding:28px 20px;text-align:center}
-.header h1{font-size:26px;font-weight:900} .header p{opacity:.9;margin-top:6px;font-size:13px}
-.controls{max-width:1240px;margin:0 auto;padding:18px 22px 0;display:flex;gap:12px;flex-wrap:wrap}
-.search{flex:1;min-width:260px;background:#151515;border:1px solid #242424;border-radius:12px;padding:12px 14px;color:#fff;outline:none}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.fbtn{background:#151515;border:1px solid #242424;color:#aaa;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700;font-size:12px}
-.fbtn.active{background:#fff;color:#000;border-color:#fff}
-.grid{max-width:1240px;margin:0 auto;padding:18px 22px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.card{background:#151515;border:1px solid #242424;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:#25f4ee}
-.thumb{height:230px;background:#fff;display:flex;align-items:center;justify-content:center;position:relative}
-.thumb img{max-width:92%;max-height:92%;object-fit:contain}
-.badge{position:absolute;top:10px;left:10px;background:#fe2c55;color:#fff;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800;z-index:2}
-.live{position:absolute;top:10px;right:10px;background:#000;color:#25f4ee;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:800;border:1px solid #25f4ee}
-.info{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
-.nome{font-weight:700;line-height:1.2;min-height:42px;font-size:15px}
-.preco{color:#25f4ee;font-weight:900;font-size:22px}
-.cat{color:#666;font-size:11px;text-transform:uppercase}
-.code{background:#222;color:#aaa;font-size:11px;padding:8px;border-radius:9px;text-align:center;display:flex;justify-content:space-between;align-items:center}
-.code b{color:#ffe600}
-.btn{display:block;text-align:center;padding:12px;border-radius:11px;text-decoration:none;font-weight:800;margin-top:6px;font-size:13px;cursor:pointer;border:0}
-.tk{background:#fe2c55;color:#fff} .ml{background:#ffe600;color:#000} .zp{background:#25d366;color:#fff}
-.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:12px 18px;border-radius:999px;font-weight:800;font-size:13px;z-index:9999;display:none;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.prova{max-width:1240px;margin:0 auto;padding:0 22px 10px;text-align:center;color:#666;font-size:12px}
-.wa-float{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:999}
-.footer{text-align:center;color:#555;padding:30px 20px;font-size:12px;line-height:1.7}
-.countdown{color:#fe2c55;font-weight:900}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;min-height:100vh}
+.cupom-bar{background:linear-gradient(90deg,#fe2c55,#ff0050);color:#fff;text-align:center;padding:10px 12px;font-weight:800;font-size:13px;letter-spacing:.5px;position:sticky;top:0;z-index:50;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.cupom-bar b{background:#fff;color:#fe2c55;padding:2px 8px;border-radius:6px}
+.header{background:linear-gradient(90deg,#fe2c55 0%,#25f4ee 100%);padding:18px 16px;text-align:center;position:relative}
+.header h1{font-size:22px;font-weight:900;letter-spacing:1px;color:#000;text-shadow:0 1px 0 rgba(255,255,255,.3)}
+.header p{font-size:12px;color:#000;font-weight:700;margin-top:4px;opacity:.9}
+.live-dot{display:inline-block;width:8px;height:8px;background:#00ff00;border-radius:50%;margin-right:6px;box-shadow:0 0 8px #00ff00;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.controls{max-width:1200px;margin:18px auto;padding:0 16px;display:flex;gap:10px;flex-wrap:wrap}
+.controls input,.controls select{background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;padding:10px 14px;border-radius:12px;flex:1;min-width:180px;outline:none}
+.controls input:focus,.controls select:focus{border-color:#25f4ee}
+.grid{max-width:1200px;margin:0 auto;padding:0 16px 100px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#121212;border:1px solid #1f1f1f;border-radius:18px;overflow:hidden;position:relative;transition:transform .18s,border-color .18s}
+.card:hover{transform:translateY(-3px);border-color:#2a2a2a}
+.thumb{aspect-ratio:1/1;background:#0f0f0f;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;padding:12px}
+.badge{position:absolute;top:10px;left:10px;background:#fe2c55;color:#fff;font-size:10px;font-weight:900;padding:5px 9px;border-radius:999px;letter-spacing:.5px;z-index:2}
+.badge.combo{background:#ffe600;color:#000}
+.badge.oferta{background:#25f4ee;color:#000}
+.badge.novo{background:#00ff88;color:#000}
+.badge.vendido{background:#fe2c55}
+.live{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border:1px solid #222;color:#00ff88;font-size:10px;font-weight:800;padding:4px 8px;border-radius:999px;display:flex;align-items:center}
+.body{padding:14px}
+.nome{font-size:14px;font-weight:700;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px}
+.desc{font-size:11px;color:#888;margin-top:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.preco{margin-top:10px;font-size:22px;font-weight:900;color:#25f4ee;letter-spacing:-.5px}
+.codebox{margin-top:10px;background:#0a0a0a;border:1px dashed #333;border-radius:10px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.codebox b{font-size:12px;letter-spacing:1px;color:#ffe600}
+.codebox button{background:#222;color:#fff;border:0;padding:6px 10px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer}
+.codebox button:hover{background:#333}
+.btns{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:0;border-radius:12px;padding:11px 10px;font-weight:900;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn-tiktok{background:#fe2c55;color:#fff;grid-column:span 2}
+.btn-ml{background:#ffe600;color:#000}
+.btn-zap{background:#25d366;color:#000}
+.btn-shopee{background:#ee4d2d;color:#fff}
+.wa-float{position:fixed;right:18px;bottom:18px;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;text-decoration:none;font-size:26px}
+.footer{max-width:1200px;margin:0 auto;padding:18px 16px;color:#666;font-size:11px;text-align:center;border-top:1px solid #1a1a1a}
 </style>
 </head>
 <body>
-<div class="banner" id="banner">🎉 CUPOM: <b>IVAN10</b> no TikTok Shop | Código ML: <b>WPNN5W-3R8V</b> - <a href="https://meli.la/2MoxWGy" target="_blank" style="color:#000;text-decoration:underline">meli.la/2MoxWGy</a> <span class="close" onclick="document.getElementById('banner').style.display='none'">✕</span></div>
-<div class="header"><h1>VITRINE OFICIAL • IVAN C MELO</h1><p>@ivan_c_melo • <span id="pcount">5</span> produtos • TikTok Shop + Mercado Livre • Oferta acaba em: <span class="countdown" id="cd">47:59:42</span></p></div>
-<div class="controls">
-<input class="search" id="search" placeholder="🔍 O que você procura? Ex: furadeira, pinador, microfone..." oninput="render()"/>
-<div class="filters" id="filters"></div>
+<div class="cupom-bar">🎁 CUPOM: <b>IVAN10</b> 10% OFF nos combos • <span id="countdown">23:59:59</span> • @ivan_c_melo • FRETE GRÁTIS*</div>
+<div class="header">
+<h1>VITRINE IVAN C MELO • @ivan_c_melo</h1>
+<p><span class="live-dot"></span>AO VIVO AGORA • 5 PRODUTOS • ATUALIZADO 02/10/2026 • V5.1</p>
 </div>
-<div class="prova">⭐ 4.9/5 • +127 vendas • Entrega rápida • <span id="viewing">18</span> pessoas vendo agora</div>
+
+<div class="controls">
+<input id="busca" placeholder="🔍 Buscar produto (ex: pinador, ryoku, v8...)" />
+<select id="filtroCat"><option value="">Todas categorias</option><option>Ferramentas</option><option>Audio / Podcast / Live</option><option>Audio / Lapela</option><option>Iluminação</option><option>Acessórios</option><option>Outros</option></select>
+<select id="filtroBadge"><option value="">Todos badges</option><option>Mais Vendido</option><option>Oferta</option><option>Novo</option><option>COMBO ML</option></select>
+</div>
+
 <div class="grid" id="grid"></div>
-<div class="footer">https://ivancm347.github.io/Minha-Vitrine/ • Sem traço no final • V5 Ultimate 5 produtos • @ivan_c_melo<br/>ML: WPNN5W-3R8V</div>
-<div class="toast" id="toast"></div>
-<a class="wa-float" href="https://wa.me/5513999999999?text=Olá Ivan! Vi sua vitrine https://ivancm347.github.io/Minha-Vitrine/" target="_blank">💬</a>
+
+<a class="wa-float" href="https://wa.me/5599999999999?text=Oi%20Ivan!%20Vim%20da%20vitrine%20@ivan_c_melo" target="_blank" rel="noopener">💬</a>
+
+<div class="footer">Vitrine V5.1 • Criado por IVAN C MELO @ivan_c_melo • 5 produtos • Gerado em 2026-10-03T00:21:33.462Z • <a href="https://ivancm347.github.io/Minha-Vitrine/" style="color:#25f4ee">ivancm347.github.io/Minha-Vitrine/</a></div>
+
 <script>
-const produtos = [{"id": "auto_ryoku", "nome": "Chave de impacto Ryoku", "preco": "R$ 230,00", "categoria": "Ferramentas", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1734498300958050085?_t=ZS-9ADVkI84UAH", "shopee": "", "mercado_livre": ""}, "imagem": "chave_de_impacto_ryoku.jpg", "imagem_transparente": "chave_de_impacto_ryoku.jpg", "badge": "Novo", "descricao": "Chave de impacto Ryoku potente para mecânica"}, {"id": "1735385374513988883", "nome": "Kit Microfone Condensador BM800 + Placa de Som V8 + Braço Articulado", "preco": "R$ 129,90", "link": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "shopee": "", "mercado_livre": ""}, "imagem": "kit_microfone_transparente.png", "imagem_transparente": "kit_microfone_transparente.png", "badge": "Mais Vendido", "categoria": "Audio / Podcast / Live"}, {"id": "1735440614844172013", "nome": "Microfone de Lapela Sem Fio α'GOLD Pro - Áudio Nítido", "preco": "R$ 89,90", "link": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "link_afiliado": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "shopee": "", "mercado_livre": ""}, "imagem": "lapela_alpha_gold_transparente_final.png", "imagem_transparente": "lapela_alpha_gold_transparente_final.png", "badge": "Afiliado", "categoria": "Audio / Lapela"}, {"id": "1733726957123503408", "nome": "Furadeira Parafusadeira Sem Fio Hanabi CY-3006 12V - com Caixa", "preco": "R$ 149,90", "link": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "link_afiliado": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "shopee": "", "mercado_livre": "https://meli.la/2MoxWGy"}, "mercado_livre": "https://meli.la/2MoxWGy", "codigo_ml": "WPNN5W-3R8V", "codigo_busca_ml": "WPNN5W-3R8V", "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_transparente": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_original": "photo8429648105038713883.jpeg", "badge": "Ferramentas • 2 Baterias", "categoria": "Ferramentas"}, {"id": "pinador_ingco_20v", "nome": "Pinador para Concreto a Bateria 20V Brushless INGCO", "preco": "R$ 599,90", "categoria": "Ferramentas", "links": {"tiktok": "https://shop.tiktok.com/br/search?keyword=INGCO%20pinador", "shopee": "", "mercado_livre": ""}, "imagem": "pinador_ingco_20v.jpg", "imagem_transparente": "pinador_ingco_20v.jpg", "badge": "Mais Vendido", "descricao": "Pinador INGCO 20V Brushless para concreto, potente e sem fio"}];
-let catAtiva = 'Todos';
-function getCats(){
-  const c = {}; produtos.forEach(p=>{const cat=(p.categoria||'Outros').split('/')[0].trim(); c[cat]=(c[cat]||0)+1;}); return c;
-}
-function buildFilters(){
-  const cats = getCats(); const f = document.getElementById('filters'); f.innerHTML='';
-  const allBtn = document.createElement('button'); allBtn.className='fbtn '+(catAtiva==='Todos'?'active':''); allBtn.textContent='Todos '+produtos.length; allBtn.onclick=()=>{catAtiva='Todos'; buildFilters(); render();}; f.appendChild(allBtn);
-  Object.keys(cats).forEach(cat=>{const b=document.createElement('button'); b.className='fbtn '+(catAtiva===cat?'active':''); b.textContent=cat+' '+cats[cat]; b.onclick=()=>{catAtiva=cat; buildFilters(); render();}; f.appendChild(b);});
-}
-function imgHTML(p){
-  const file = p.imagem_base64 ? p.imagem_base64 : (p.imagem||p.imagem_transparente||'');
-  if(!file) return '<div style="font-size:54px">🔧</div>';
-  if(file.startsWith('data:')){
-    return '<img src="'+file+'" loading="lazy" onerror="this.style.display=\'none\'">';
+const produtos = [
+  {
+    "id": "pinador_ingco_20v",
+    "nome": "Pinador para Concreto a Bateria 20V Brushless da INGCO",
+    "preco": "R$ 599,90",
+    "categoria": "Ferramentas",
+    "badge": "Mais Vendido",
+    "descricao": "Pinador INGCO 20V Brushless para concreto, potente e sem fio - 4.232 vendas",
+    "link_tiktok": "",
+    "link_shopee": "",
+    "link_ml": "",
+    "codigo_ml": "",
+    "codigo_busca_ml": "",
+    "imagem": "pinador_ingco_20v.jpg",
+    "imagem_base64": ""
+  },
+  {
+    "id": "auto_ryoku",
+    "nome": "Chave De Impacto Brushless 600 Nm 2 Baterias 21v Sem Fio RYOKU Com Maleta",
+    "preco": "R$ 230,00",
+    "categoria": "Ferramentas",
+    "badge": "Oferta",
+    "descricao": "Chave de Impacto Ryoku 520N.m com 2 baterias - ideal para mecânica e uso profissional.",
+    "link_tiktok": "",
+    "link_shopee": "",
+    "link_ml": "",
+    "codigo_ml": "",
+    "codigo_busca_ml": "",
+    "imagem": "chave_de_impacto_ryoku.jpg",
+    "imagem_base64": ""
+  },
+  {
+    "id": "1735385374513988883",
+    "nome": "Kit Completo Interface Mesa V8 + Microfone Bm800 Com Braço Articulado",
+    "preco": "R$ 142,00",
+    "categoria": "Audio / Podcast / Live",
+    "badge": "Mais Vendido",
+    "descricao": "Kit Microfone Condensador BM800 com placa, suporte e espuma - qualidade estúdio.",
+    "link_tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh",
+    "link_shopee": "",
+    "link_ml": "",
+    "codigo_ml": "",
+    "codigo_busca_ml": "",
+    "imagem": "kit_microfone_transparente.png",
+    "imagem_base64": ""
+  },
+  {
+    "id": "1735440614844172013",
+    "nome": "Microfone Profissional Sem Fio Duplo Lapela Redondo para Iphone ou Android Kaidi",
+    "preco": "R$ 92,00",
+    "categoria": "Audio / Lapela",
+    "badge": "Novo",
+    "descricao": "Microfone de Lapela Alpha Gold Transparente Final - som limpo para gravações.",
+    "link_tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q",
+    "link_shopee": "",
+    "link_ml": "",
+    "codigo_ml": "",
+    "codigo_busca_ml": "",
+    "imagem": "lapela_alpha_gold_transparente_final.png",
+    "imagem_base64": ""
+  },
+  {
+    "id": "1733726957123503408",
+    "nome": "Parafusadeira 16.8V Brushless Impacto Sem Fio 2.0Ah Bivolt 127/220V Alta Potência Azul Petróleo Profissional",
+    "preco": "R$ 149,90",
+    "categoria": "Ferramentas",
+    "badge": "COMBO ML",
+    "descricao": "Parafusadeira Hanabi BLACK 12V com maleta. Link ML direto com código de desconto.",
+    "link_tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG",
+    "link_shopee": "",
+    "link_ml": "",
+    "codigo_ml": "WPNN5W-3R8V",
+    "codigo_busca_ml": "WPNN5W-3R8V",
+    "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png",
+    "imagem_base64": ""
   }
-  const safeFile = file.replace(/'/g, "");
-  return '<img src="./'+safeFile+'" alt="'+p.nome+'" loading="lazy" onerror="this.onerror=null; this.src=\'./imagens/'+safeFile+'\'; this.onerror=function(){this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';}"><div style="display:none;font-size:54px;width:100%;height:100%;justify-content:center;align-items:center">🔧</div>';
+];
+
+function escapeHtml(s){
+  if(!s) return "";
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
-function toast(msg){
-  const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',2800);
+
+function getBadgeClass(b){
+  const x=(b||"").toLowerCase();
+  if(x.includes("combo")) return "badge combo";
+  if(x.includes("oferta")) return "badge oferta";
+  if(x.includes("novo")) return "badge novo";
+  if(x.includes("vendido")) return "badge vendido";
+  return "badge";
 }
-function copiarCodigo(cod, linkML){
-  navigator.clipboard.writeText(cod).then(()=>{toast('✅ Código '+cod+' copiado! Abrindo ML...'); setTimeout(()=>window.open(linkML,'_blank'),600);}).catch(()=>{toast('Código: '+cod); window.open(linkML,'_blank');});
+
+// FIX IMAGENS DEFINITIVO V3 - sem bug de aspas
+function imgHTML(p){
+  try{
+    if(p.imagem_base64 && typeof p.imagem_base64==="string" && p.imagem_base64.startsWith("data:image")){
+      return '<img src="' + p.imagem_base64 + '" alt="' + escapeHtml(p.nome) + '" loading="lazy" />';
+    }
+    if(p.imagem){
+      const safeFile = p.imagem.replace(/"/g,"");
+      // tenta ./file depois ./imagens/file, se falhar mostra emoji
+      return '<img src="./' + safeFile + '" alt="' + escapeHtml(p.nome) + '" loading="lazy" onerror="this.onerror=null; const img=this; const next=img.nextElementSibling; img.src='./imagens/' + safeFile + "'; img.onerror=function(){img.style.display='none'; if(next) next.style.display='flex';};" + '" />' + '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;background:#0f0f0f">🛒</div>';
+    }
+  }catch(e){}
+  return '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:#0f0f0f">🛒</div>';
 }
-function render(){
-  const q = (document.getElementById('search').value||'').toLowerCase();
-  const grid=document.getElementById('grid'); grid.innerHTML='';
-  let list = produtos.filter(p=>{
-    const cat0=(p.categoria||'').split('/')[0].trim(); const matchCat = catAtiva==='Todos' || cat0===catAtiva;
-    const txt = (p.nome+' '+p.preco+' '+(p.categoria||'')+' '+(p.descricao||'')).toLowerCase(); const matchQ = !q || txt.includes(q);
-    return matchCat && matchQ;
+
+function copiarCodigo(codigo, linkML){
+  if(!codigo) return;
+  navigator.clipboard.writeText(codigo).then(()=>{
+    alert("✅ Código " + codigo + " copiado! Abrindo Mercado Livre...");
+    if(linkML) window.open(linkML,"_blank");
+  }).catch(()=>{
+    prompt("Copie o código:", codigo);
+    if(linkML) window.open(linkML,"_blank");
   });
-  document.getElementById('pcount').textContent=list.length;
-  list.forEach(p=>{
-    const tk = p.links?.tiktok||p.link||p.link_afiliado||''; const ml = p.links?.mercado_livre||p.mercado_livre||'';
-    const cod = p.codigo_ml||p.codigo_busca_ml||''; const viewers = Math.floor(8+Math.random()*18);
-    const card=document.createElement('div'); card.className='card';
-    card.innerHTML='<div class="thumb"><span class="badge">'+(p.badge||p.categoria||'Produto')+'</span><span class="live">🔥 '+viewers+' vendo</span>'+imgHTML(p)+'</div><div class="info"><div class="cat">'+(p.categoria||'')+'</div><div class="nome">'+p.nome+'</div><div class="preco">'+p.preco+'</div>'+(cod?'<div class="code"><span>🔍 <b>'+cod+'</b></span><button class="fbtn" style="padding:4px 10px;background:#ffe600;color:#000;border:0" onclick="copiarCodigo(''+cod+'',''+(ml||'https://meli.la/2MoxWGy')+'')">📋 Copiar</button></div>':'')+(tk?'<a class="btn tk" href="'+tk+'" target="_blank">🛒 TikTok Shop</a>':'')+(ml?'<a class="btn ml" href="'+ml+'" target="_blank">💛 Mercado Livre</a>':'')+'<a class="btn zp" href="https://wa.me/5513999999999?text='+encodeURIComponent('Olá Ivan! Vi '+p.nome+' na sua vitrine https://ivancm347.github.io/Minha-Vitrine/')+'" target="_blank">💬 Dúvida? Zap</a></div>';
-    grid.appendChild(card);
-  });
-  if(list.length===0) grid.innerHTML='<div style="grid-column:1/-1;text-align:center;color:#666;padding:40px">Nenhum produto encontrado para "'+q+'"</div>';
 }
-let sec = 47*3600+59*60+42; setInterval(()=>{sec--; if(sec<0) sec=48*3600; const h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60), s=sec%60; document.getElementById('cd').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');},1000);
-setInterval(()=>{document.getElementById('viewing').textContent=Math.floor(10+Math.random()*20);},3000);
-buildFilters(); render();
+
+function render(lista){
+  const grid=document.getElementById("grid");
+  if(!lista.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666">Nenhum produto encontrado</div>';
+    return;
+  }
+  grid.innerHTML = lista.map(p=>{
+    const preco = escapeHtml(p.preco||"");
+    const nome = escapeHtml(p.nome||"");
+    const desc = escapeHtml(p.descricao||p.vendas||"");
+    const badge = p.badge ? '<div class="' + getBadgeClass(p.badge) + '">' + escapeHtml(p.badge.toUpperCase()) + '</div>' : "";
+    const live = '<div class="live"><span style="width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;margin-right:5px;box-shadow:0 0 6px #00ff88"></span>LIVE</div>';
+    const codeBox = p.codigo_ml ? '<div class="codebox"><span>ML: <b>' + escapeHtml(p.codigo_ml) + '</b></span><button onclick="copiarCodigo(\'' + escapeHtml(p.codigo_ml) + '\',\'' + (p.link_ml||'') + '\')">COPIAR</button></div>' : "";
+    const btnTiktok = p.link_tiktok ? '<a class="btn btn-tiktok" href="' + p.link_tiktok + '" target="_blank" rel="noopener">🛍️ TikTok Shop</a>' : "";
+    const btnML = p.link_ml ? '<a class="btn btn-ml" href="' + p.link_ml + '" target="_blank" rel="noopener">🛒 Mercado Livre</a>' : "";
+    const btnZap = '<a class="btn btn-zap" href="https://wa.me/5599999999999?text=Oi%20Ivan!%20Quero%20' + encodeURIComponent(p.nome||'') + '" target="_blank" rel="noopener">💬 Whats</a>';
+    const btnShopee = p.link_shopee ? '<a class="btn btn-shopee" href="' + p.link_shopee + '" target="_blank" rel="noopener">🟠 Shopee</a>' : "";
+    const hasSecondRow = (p.link_ml || p.link_shopee) ? "grid-template-columns:1fr 1fr" : "grid-template-columns:1fr";
+    return '<div class="card" data-cat="' + escapeHtml(p.categoria||"") + '" data-badge="' + escapeHtml(p.badge||"") + '">'
+      + '<div class="thumb">' + badge + live + imgHTML(p) + '</div>'
+      + '<div class="body"><div class="nome">' + nome + '</div><div class="desc">' + desc + '</div><div class="preco">' + preco + '</div>' + codeBox
+      + '<div class="btns">' + btnTiktok + '</div>'
+      + '<div class="btns" style="margin-top:8px;' + hasSecondRow + '">' + btnML + btnShopee + btnZap + '</div>'
+      + '</div></div>';
+  }).join("");
+}
+
+function filtrar(){
+  const q=(document.getElementById("busca").value||"").toLowerCase();
+  const cat=document.getElementById("filtroCat").value;
+  const badge=document.getElementById("filtroBadge").value;
+  const f=produtos.filter(p=>{
+    const okQ=!q || (p.nome+" "+(p.descricao||"")+" "+(p.categoria||"")).toLowerCase().includes(q);
+    const okC=!cat || p.categoria===cat;
+    const okB=!badge || p.badge===badge;
+    return okQ && okC && okB;
+  });
+  render(f);
+}
+
+document.getElementById("busca").addEventListener("input",filtrar);
+document.getElementById("filtroCat").addEventListener("change",filtrar);
+document.getElementById("filtroBadge").addEventListener("change",filtrar);
+render(produtos);
+
+// countdown fake 24h
+(function(){
+  let s=86399;
+  setInterval(()=>{
+    s--; if(s<0) s=86399;
+    const h=String(Math.floor(s/3600)).padStart(2,"0");
+    const m=String(Math.floor((s%3600)/60)).padStart(2,"0");
+    const sec=String(s%60).padStart(2,"0");
+    const el=document.getElementById("countdown");
+    if(el) el.textContent=h+":"+m+":"+sec;
+  },1000);
+})();
 </script>
 </body>
 </html>
