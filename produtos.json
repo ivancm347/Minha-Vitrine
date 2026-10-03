@@ -1,0 +1,77 @@
+[
+  {
+    "id": "pinador_ingco_20v",
+    "nome": "Pinador para Concreto a Bateria 20V Brushless da INGCO",
+    "preco": "R$ 599,90",
+    "categoria": "Ferramentas",
+    "badge": "Mais Vendido",
+    "descricao": "Pinador INGCO 20V Brushless para concreto, potente e sem fio - 4.232 vendas",
+    "links": {
+      "tiktok": "https://shop.tiktok.com/br/search?keyword=INGCO%20pinador",
+      "shopee": "",
+      "mercado_livre": ""
+    },
+    "imagem": "pinador_ingco_20v.jpg",
+    "codigo_ml": ""
+  },
+  {
+    "id": "auto_ryoku",
+    "nome": "Chave De Impacto Brushless 600 Nm 2 Baterias 21v Sem Fio RYOKU Com Maleta",
+    "preco": "R$ 230,00",
+    "categoria": "Ferramentas",
+    "badge": "Oferta",
+    "descricao": "Chave de Impacto Ryoku 520N.m com 2 baterias - ideal para mecânica e uso profissional.",
+    "links": {
+      "tiktok": "https://shop.tiktok.com/br/pdp/1734498300958050085?_t=ZS-9ADVkI84UAH",
+      "shopee": "",
+      "mercado_livre": ""
+    },
+    "imagem": "chave_de_impacto_ryoku.jpg",
+    "codigo_ml": ""
+  },
+  {
+    "id": "1735385374513988883",
+    "nome": "Kit Completo Interface Mesa V8 + Microfone Bm800 Com Braço Articulado",
+    "preco": "R$ 142,00",
+    "categoria": "Audio / Podcast / Live",
+    "badge": "Mais Vendido",
+    "descricao": "Kit Microfone Condensador BM800 com placa, suporte e espuma - qualidade estúdio.",
+    "links": {
+      "tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh",
+      "shopee": "",
+      "mercado_livre": ""
+    },
+    "imagem": "kit_microfone_transparente.png",
+    "codigo_ml": ""
+  },
+  {
+    "id": "1735440614844172013",
+    "nome": "Microfone Profissional Sem Fio Duplo Lapela Redondo para Iphone ou Android Kaidi",
+    "preco": "R$ 92,00",
+    "categoria": "Audio / Lapela",
+    "badge": "Novo",
+    "descricao": "Microfone de Lapela Alpha Gold Transparente Final - som limpo para gravações.",
+    "links": {
+      "tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q",
+      "shopee": "",
+      "mercado_livre": ""
+    },
+    "imagem": "lapela_alpha_gold_transparente_final.png",
+    "codigo_ml": ""
+  },
+  {
+    "id": "1733726957123503408",
+    "nome": "Parafusadeira 16.8V Brushless Impacto Sem Fio 2.0Ah Bivolt 127/220V Alta Potência Azul Petróleo Profissional",
+    "preco": "R$ 149,90",
+    "categoria": "Ferramentas",
+    "badge": "COMBO ML",
+    "descricao": "Parafusadeira Hanabi BLACK 12V com maleta. Link ML direto com código de desconto.",
+    "links": {
+      "tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG",
+      "shopee": "",
+      "mercado_livre": "https://meli.la/2MoxWGy"
+    },
+    "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png",
+    "codigo_ml": "WPNN5W-3R8V"
+  }
+]
