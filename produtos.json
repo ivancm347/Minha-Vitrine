@@ -5,7 +5,7 @@
     "categoria": "Ferramentas",
     "marca": "INGCO",
     "preco_de": 5590,
-    "preco": 4232,
+    "preco": 4500,
     "estoque": true,
     "destaque": true,
     "badge": "OFERTA -24%",
@@ -18,7 +18,7 @@
       "mercado_livre": ""
     },
     "cupom": "IVAN10",
-    "avaliacao": 4.8,
+    "avaliacao": 4.9,
     "whatsapp": "5511976983978"
   },
   {
@@ -48,8 +48,8 @@
     "nome": "Kit Completo Interface Mesa V8 + Microfone Bm800 Com Braço Articulado",
     "categoria": "Áudio",
     "marca": "BM800",
-    "preco_de": 250,
-    "preco": 140.98,
+    "preco_de": 0,
+    "preco": 142,
     "estoque": true,
     "destaque": false,
     "badge": "Mais Vendido",
@@ -62,7 +62,7 @@
       "mercado_livre": ""
     },
     "cupom": "IVAN10",
-    "avaliacao": 4.8,
+    "avaliacao": 4.9,
     "whatsapp": "5511976983978"
   },
   {
@@ -71,7 +71,7 @@
     "categoria": "Áudio",
     "marca": "Kaidi",
     "preco_de": 129.9,
-    "preco": 39,
+    "preco": 92,
     "estoque": true,
     "destaque": true,
     "badge": "OFERTA -29%",
@@ -84,7 +84,7 @@
       "mercado_livre": ""
     },
     "cupom": "IVAN10",
-    "avaliacao": 4.8,
+    "avaliacao": 4.7,
     "whatsapp": "5511976983978"
   },
   {
