@@ -175,7 +175,7 @@ function getFiltered(){
 function imgHTML(p){
   const file = p.imagem||'';
   if(!file) return '<div style="font-size:48px">🔧</div>';
-  return '<img src="./'+file+'" alt="'+p.nome.replace(/"/g,'')+'" loading="lazy" onerror="this.onerror=null; this.src='./imagens/'+file+''; this.onerror=function(){this.style.display='none';}">';
+  const safe=file.replace(/'/g,''); return '<img src="./'+safe+'" alt="" loading="lazy" onerror="this.onerror=null; this.src=\'./imagens/'+safe+'\';">';
 }
 function toast(msg){
   const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(window._toast); window._toast=setTimeout(()=>t.style.display='none',2500);
