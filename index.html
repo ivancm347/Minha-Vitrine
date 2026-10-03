@@ -104,6 +104,9 @@ function formatPreco(v){ return new Intl.NumberFormat('pt-BR',{style:'currency',
 function calcDesconto(de, atual){ if(!de || de<=atual) return 0; return Math.round((1-atual/de)*100); }
 function getClicks(){ try{return JSON.parse(localStorage.getItem('vitrine_clicks')||'{}');}catch{return {};}}
 function addClick(prodId, plataforma){
+  try{ _addClick(prodId, plataforma); }catch(e){}
+}
+function _addClick(prodId, plataforma){
   const clicks = getClicks();
   if(!clicks[prodId]) clicks[prodId] = {tiktok:0, shopee:0, mercado_livre:0, whatsapp:0, total:0};
   clicks[prodId][plataforma] = (clicks[prodId][plataforma]||0)+1;
