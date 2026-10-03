@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-<title>V6.2 FINAL - Vitrine Ivan C Melo - OFERTAS - Zap 11 97698-3978</title>
-<meta name="description" content="V6.2 FINAL - Vitrine Oficial Ivan C Melo - OFERTAS: Pinador INGCO de R$5.590 por R$4.232 (-24%), Chave 600Nm de R$350 por R$230 (-34%), Lapela de R$129 por R$92 (-29%) - Busca por marca, categoria, descricao"/>
+<title>Vitrine Ivan C Melo - Ofertas e Achadinhos</title>
+<meta name="description" content="Vitrine oficial Ivan C Melo: achadinhos com ofertas em ferramentas e áudio. Cupom IVAN10 e atendimento pelo WhatsApp."/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0a;--card:#151515;--border:#242424;--pink:#fe2c55;--cyan:#25f4ee;--yellow:#ffe600;--green:#25d366}
 body{background:var(--bg);color:#fff;font-family:Inter,system-ui;line-height:1.4}
 .version-badge{background:#fff;color:#000;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:900;margin-left:8px;vertical-align:middle}
-.banner{background:var(--yellow);color:#000;text-align:center;padding:12px 14px;font-weight:800;font-size:12px;position:sticky;top:0;z-index:50;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;border-bottom:2px solid #000}
+.banner{background:var(--yellow);color:#000;text-align:center;padding:12px 14px;font-weight:800;font-size:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;border-bottom:2px solid #000}
 .banner b{background:#000;color:var(--yellow);padding:3px 8px;border-radius:6px}
 .header{background:linear-gradient(90deg,var(--pink),var(--cyan));padding:24px 16px;text-align:center}
 .header h1{font-size:22px;font-weight:900} .header p{opacity:.95;margin-top:8px;font-size:12px;font-weight:600}
 .header .v6note{background:#000;color:var(--yellow);display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:900;margin-top:10px;border:1px solid var(--yellow)}
 .header .stats{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
 .header .stat{background:rgba(0,0,0,.4);backdrop-filter:blur(8px);padding:7px 12px;border-radius:999px;font-size:11px;font-weight:800;border:1px solid rgba(255,255,255,.2)}
-.controls{max-width:1240px;margin:0 auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;background:var(--bg);position:sticky;top:44px;z-index:40;border-bottom:1px solid var(--border)}
+.controls{max-width:1240px;margin:0 auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;background:var(--bg);position:sticky;top:0;z-index:40;border-bottom:1px solid var(--border)}
 .controls-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .search-wrap{flex:1;min-width:200px;position:relative;display:flex;gap:8px}
 .search-wrap input{flex:1;background:var(--card);border:2px solid var(--pink);border-radius:12px;padding:12px 14px 12px 38px;color:#fff;outline:none;font-size:14px;width:100%}
@@ -71,31 +71,29 @@ body{background:var(--bg);color:#fff;font-family:Inter,system-ui;line-height:1.4
 </style>
 </head>
 <body>
-<div class="banner"><span>🎉 V6.2 FINAL - CUPOM: <b>IVAN10</b> TikTok | ML: <b>WPNN5W-3R8V</b> <a href="https://meli.la/2MoxWGy" target="_blank" style="color:#000;text-decoration:underline">meli.la/2MoxWGy</a> | ZAP: <b>(11) 97698-3978</b></span></div>
+<div class="banner"><span>🎉 CUPOM: <b>IVAN10</b> TikTok | ML: <b>WPNN5W-3R8V</b> <a href="https://meli.la/2MoxWGy" target="_blank" style="color:#000;text-decoration:underline">meli.la/2MoxWGy</a> | ZAP: <b>(11) 97698-3978</b></span></div>
 <div class="header">
 <img class="avatar" src="./foto-ivan.jpg" alt="Ivan C Melo" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://github.com/ivancm347.png';}else{this.style.display='none';}">
-<h1>VITRINE OFICIAL • IVAN C MELO <span class="version-badge">V6.2 FINAL</span></h1>
+<h1>VITRINE OFICIAL • IVAN C MELO</h1>
 <p>@ivan_c_melo • Achadinhos com Ofertas Reais - Busca por Marca, Categoria, Descrição</p>
-<div class="v6note">✨ NOVO V6.2: Ofertas no topo automático + Busca por marca/descrição + Favoritos + Clique tracking separado + Compartilhar</div>
 <div class="stats">
 <span class="stat" id="stat-produtos">5 produtos</span>
 <span class="stat" id="stat-ofertas">4 ofertas</span>
 <span class="stat" id="stat-categorias">2 categorias</span>
-<span class="stat">⭐ 4.9/5 • +127 vendas</span>
 </div>
 </div>
 <div class="controls">
 <div class="controls-row">
-<div class="search-wrap" id="searchWrap"><input id="search" placeholder="🔎 NOVA BUSCA V6: nome, marca INGCO/RYOKU, categoria Ferramentas/Áudio, descrição laser 20V..." autocomplete="off"/><button class="clear" onclick="clearSearch()">✕</button></div>
+<div class="search-wrap" id="searchWrap"><input id="search" placeholder="Buscar por nome, marca ou categoria..." autocomplete="off"/><button class="clear" onclick="clearSearch()">✕</button></div>
 <select class="sort" id="sort" onchange="render()"><option value="relevancia">🔥 Relevância (ofertas topo)</option><option value="menor">💰 Menor preço</option><option value="maior">💎 Maior preço</option><option value="desconto">📉 Maior desconto</option><option value="nome">🔤 Nome A-Z</option></select>
 </div>
 <div class="controls-row"><div class="filters" id="filters"></div></div>
 </div>
-<div class="prova"><span>👁️ <b id="viewing">18</b> pessoas vendo agora</span><span>⚡ Entrega rápida</span><span>🔒 Compra segura</span><span>💬 Suporte Zap (11) 97698-3978</span><span>❤️ Favoritos salvos no celular</span></div>
+<div class="prova"><span>🛒 Compra direto na loja oficial</span><span>💬 Dúvidas? Chame no Zap (11) 97698-3978</span><span>❤️ Favoritos salvos neste aparelho</span></div>
 <div class="grid" id="grid"></div>
-<div class="footer">https://ivancm347.github.io/Minha-Vitrine/ • V6.2 FINAL VISÍVEL • @ivan_c_melo • Zap (11) 97698-3978<br/>ML: WPNN5W-3R8V • wa.me/5511976983978 • Produtos via produtos.json V6 com preco_de, marca, destaque, estoque<br/>Mudanças V6 visíveis: borda rosa em ofertas, preço antigo riscado, % desconto, botão favorito ❤️, compartilhar 📤, clicks separados</div>
+<div class="footer">Vitrine Ivan C Melo • @ivan_c_melo • Zap (11) 97698-3978<br/>Como afiliado, posso receber comissão pelas compras feitas pelos links, sem custo extra para você. Preços e estoque podem mudar nas lojas.</div>
 <div class="toast" id="toast"></div>
-<a class="wa-float" href="https://wa.me/5511976983978?text=Ol%C3%A1%20Ivan!%20Vi%20sua%20vitrine%20V6.2%20https://ivancm347.github.io/Minha-Vitrine/" target="_blank" title="WhatsApp (11) 97698-3978">💬</a>
+<a class="wa-float" href="https://wa.me/5511976983978?text=Ol%C3%A1%20Ivan!%20Vi%20sua%20vitrine%20https://ivancm347.github.io/Minha-Vitrine/" target="_blank" title="WhatsApp (11) 97698-3978">💬</a>
 <script>
 const PRODUTOS_EMBUTIDOS = [{"id": "pinador-ingco-20v", "nome": "Pinador para Concreto a Bateria 20V Brushless da INGCO", "categoria": "Ferramentas", "marca": "INGCO", "preco_de": 5590, "preco": 4232, "estoque": true, "destaque": true, "badge": "OFERTA -24%", "descricao": "Pinador INGCO 20V Brushless para concreto, potente e sem fio - 4.232 vendas - Ideal para construção e acabamento", "imagem": "pinador_ingco_20v.jpg", "imagem_alt": "", "links": {"tiktok": "https://shop.tiktok.com/br/search?keyword=INGCO%20pinador", "shopee": "", "mercado_livre": ""}, "cupom": "IVAN10", "avaliacao": 4.9, "whatsapp": "5511976983978"}, {"id": "chave-ryoku-600nm", "nome": "Chave De Impacto Brushless 600 Nm 2 Baterias 21v Sem Fio RYOKU Com Maleta", "categoria": "Ferramentas", "marca": "RYOKU", "preco_de": 350.0, "preco": 230.0, "estoque": true, "destaque": true, "badge": "OFERTA -34%", "descricao": "Chave de Impacto Ryoku 600Nm 520N.m com 2 baterias 21V - ideal para mecânica e uso profissional", "imagem": "chave_de_impacto_ryoku.jpg", "imagem_alt": "", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1734498300958050085?_t=ZS-9ADVkI84UAH", "shopee": "", "mercado_livre": ""}, "cupom": "IVAN10", "avaliacao": 4.8, "whatsapp": "5511976983978"}, {"id": "kit-v8-bm800", "nome": "Kit Completo Interface Mesa V8 + Microfone Bm800 Com Braço Articulado", "categoria": "Áudio", "marca": "BM800", "preco_de": 0, "preco": 142.0, "estoque": true, "destaque": false, "badge": "Mais Vendido", "descricao": "Kit Microfone Condensador BM800 com placa V8, suporte e espuma - qualidade estúdio para podcast e live", "imagem": "kit_microfone_transparente.png", "imagem_alt": "", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735385374513988883?_t=ZS-9ACfwPSMclh", "shopee": "", "mercado_livre": ""}, "cupom": "IVAN10", "avaliacao": 4.9, "whatsapp": "5511976983978"}, {"id": "lapela-kaidi-duplo", "nome": "Microfone Profissional Sem Fio Duplo Lapela Kaidi para iPhone/Android", "categoria": "Áudio", "marca": "Kaidi", "preco_de": 129.9, "preco": 92.0, "estoque": true, "destaque": true, "badge": "OFERTA -29%", "descricao": "Microfone de Lapela Alpha Gold duplo sem fio - som limpo para gravações, entrevistas e TikTok", "imagem": "lapela_alpha_gold_transparente_final.png", "imagem_alt": "", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1735440614844172013?_t=ZS-9AChH7drl2q", "shopee": "", "mercado_livre": ""}, "cupom": "IVAN10", "avaliacao": 4.7, "whatsapp": "5511976983978"}, {"id": "parafusadeira-16-8v", "nome": "Parafusadeira 16.8V Brushless Impacto Sem Fio 2.0Ah Bivolt Azul Petróleo", "categoria": "Ferramentas", "marca": "Hanabi", "preco_de": 199.9, "preco": 149.9, "estoque": true, "destaque": true, "badge": "COMBO ML", "descricao": "Parafusadeira Hanabi 16.8V Brushless com 2 baterias - código ML WPNN5W-3R8V meli.la/2MoxWGy", "imagem": "furadeira_hanabi_FINAL_BLACK_transparente.png", "imagem_alt": "", "links": {"tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG", "shopee": "", "mercado_livre": "https://meli.la/2MoxWGy"}, "cupom": "WPNN5W-3R8V", "avaliacao": 4.8, "whatsapp": "5511976983978"}];
 let produtos = PRODUTOS_EMBUTIDOS.slice();
@@ -130,7 +128,7 @@ function updateStats(){
   const cats = [...new Set(produtos.map(p=>p.categoria))];
   const ofertas = produtos.filter(p=>p.preco_de>0 && p.preco_de>p.preco).length;
   document.getElementById('stat-produtos').textContent = produtos.length+' produtos';
-  document.getElementById('stat-ofertas').textContent = ofertas+' ofertas (-% visível)';
+  document.getElementById('stat-ofertas').textContent = ofertas+' ofertas';
   document.getElementById('stat-categorias').textContent = cats.length+' categorias';
 }
 function getCategorias(){
@@ -141,9 +139,9 @@ function buildFilters(){
   const all = document.createElement('button'); all.className='fbtn '+(catAtiva==='Todos'&&!favAtiva?'active':''); all.textContent='Todos '+produtos.length; all.onclick=()=>{catAtiva='Todos'; favAtiva=false; buildFilters(); render();}; f.appendChild(all);
   const ofertasCount = produtos.filter(p=>p.preco_de>0 && p.preco_de>p.preco).length;
   if(ofertasCount>0){
-    const b=document.createElement('button'); b.className='fbtn oferta '+ (catAtiva==='Ofertas'?'active':''); b.textContent='🔥 OFERTAS '+ofertasCount+' (NOVO V6)'; b.onclick=()=>{catAtiva='Ofertas'; favAtiva=false; buildFilters(); render();}; f.appendChild(b);
+    const b=document.createElement('button'); b.className='fbtn oferta '+ (catAtiva==='Ofertas'?'active':''); b.textContent='🔥 Ofertas '+ofertasCount; b.onclick=()=>{catAtiva='Ofertas'; favAtiva=false; buildFilters(); render();}; f.appendChild(b);
   }
-  const favs = getFavs(); if(favs.length>0){ const b=document.createElement('button'); b.className='fbtn '+(favAtiva?'active':''); b.style.background=favAtiva?'#ffe600':'var(--card)'; b.style.color=favAtiva?'#000':'#888'; b.textContent='❤️ Favoritos '+favs.length+' (NOVO)'; b.onclick=()=>{favAtiva=!favAtiva; buildFilters(); render();}; f.appendChild(b); }
+  const favs = getFavs(); if(favs.length>0){ const b=document.createElement('button'); b.className='fbtn '+(favAtiva?'active':''); b.style.background=favAtiva?'#ffe600':'var(--card)'; b.style.color=favAtiva?'#000':'#888'; b.textContent='❤️ Favoritos '+favs.length; b.onclick=()=>{favAtiva=!favAtiva; buildFilters(); render();}; f.appendChild(b); }
   Object.keys(cats).forEach(cat=>{ const b=document.createElement('button'); b.className='fbtn '+(catAtiva===cat&&!favAtiva?'active':''); b.textContent=cat+' '+cats[cat]; b.onclick=()=>{catAtiva=cat; favAtiva=false; buildFilters(); render();}; f.appendChild(b); });
 }
 function getFiltered(){
@@ -167,10 +165,10 @@ function getFiltered(){
   return list;
 }
 function imgHTML(p){
-  const file = p.imagem||'';
-  if(!file) return '<div style="font-size:48px">🔧</div>';
-  const safe=file.replace(/'/g,'');
-  return '<img src="./'+safe+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+  const file = (p.imagem||'').trim();
+  if(!file) return '<div style="font-size:48px">🛍️</div>';
+  const src = './'+encodeURIComponent(file).replace(/%2F/g,'/');
+  return '<img src="'+src+'" alt="'+(p.nome||'').replace(/"/g,'')+'" loading="lazy" onerror="this.outerHTML=\'<div style=&quot;font-size:48px&quot;>🛍️</div>\'">';
 }
 function toast(msg){
   const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(window._toast); window._toast=setTimeout(()=>t.style.display='none',2500);
@@ -189,52 +187,44 @@ function render(){
   if(list.length===0){ grid.innerHTML='<div class="empty">🔍 Nenhum produto encontrado<br><small>Tente buscar: <span class=highlight>INGCO</span> <span class=highlight>RYOKU</span> <span class=highlight>Ferramentas</span> <span class=highlight>Áudio</span> <span class=highlight>20V</span> <span class=highlight>laser</span></small></div>'; return; }
   list.forEach(p=>{
     const desc = calcDesconto(p.preco_de, p.preco);
-    const viewers = Math.floor(8+Math.random()*22);
-    const fav = isFav(p.id);
-    const clicks = getClicks()[p.id];
-    const totalClicks = clicks ? clicks.total : 0;
+        const fav = isFav(p.id);
     const tk = p.links?.tiktok||''; const ml = p.links?.mercado_livre||'';
     const zap = p.whatsapp||ZAP_PADRAO;
     const hasDe = p.preco_de>0 && p.preco_de>p.preco;
     const card=document.createElement('div'); card.className='card '+(hasDe?'oferta':'')+' '+(fav?'fav':'');
     card.innerHTML=`
       <div class="thumb">
-        <span class="badge">${p.badge||p.categoria} ${hasDe?'🔥':''}</span>
-        ${desc>0?'<span class="discount">-'+desc+'% OFF (NOVO)</span>':''}
-        <button class="fav-btn ${fav?'active':''}" onclick="toggleFav('${p.id}')" title="Favoritar - NOVO V6"> ${fav?'❤️':'🤍'} </button>
-        <span class="live">🔥 ${viewers} vendo agora</span>
+        <span class="badge">${(hasDe&&/^OFERTA/i.test(p.badge||''))?'OFERTA -'+desc+'%':(p.badge||p.categoria)} ${hasDe?'🔥':''}</span>
+                <button class="fav-btn ${fav?'active':''}" onclick="toggleFav('${p.id}')" title="Favoritar"> ${fav?'❤️':'🤍'} </button>
         ${imgHTML(p)}
       </div>
       <div class="info">
-        <div class="cat"><span>${p.categoria}</span>${p.marca?'<span class="marca">MARCA: '+p.marca+'</span>':''}${p.avaliacao?'<span>⭐ '+p.avaliacao+'</span>':''}</div>
+        <div class="cat"><span>${p.categoria}</span>${p.marca?'<span class="marca">MARCA: '+p.marca+'</span>':''}</div>
         <div class="nome">${p.nome}</div>
         <div class="preco-wrap">
           ${hasDe?'<span class="preco-de">De: '+formatPreco(p.preco_de)+'</span>':''}
           <span class="preco-atual ${hasDe?'oferta':''}">Por: ${formatPreco(p.preco)} ${hasDe?'<small style="font-size:12px;background:#fe2c55;color:#fff;padding:3px 8px;border-radius:6px">-'+desc+'% OFF</small>':''}</span>
-          <small style="color:#666;font-size:10px">V6.2: mostra preço antigo riscado + atual + desconto</small>
         </div>
-        <div class="estoque ${p.estoque?'ok':'off'}">${p.estoque?'✅ Em estoque':'❌ Sem estoque'} ${p.destaque?'• 🔥 Destaque topo':''}</div>
-        ${p.cupom?'<div class="code"><span>🎟️ Cupom: <b>'+p.cupom+'</b></span><button class="fbtn" style="padding:4px 8px;background:var(--yellow);color:#000;border:0;font-size:10px" onclick="navigator.clipboard.writeText(\''+p.cupom+'\').then(()=>toast(\'✅ Cupom copiado!\'))">Copiar</button></div>':''}
+        <div class="estoque ${p.estoque?'ok':'off'}">${p.estoque?'✅ Em estoque':'❌ Sem estoque'} ${p.destaque?'• 🔥 Destaque':''}</div>
+        ${p.cupom?'<div class="code"><span>🎟️ Cupom: <b>'+p.cupom+'</b></span><button class="fbtn" style="padding:4px 8px;background:var(--yellow);color:#000;border:0;font-size:10px" onclick="navigator.clipboard.writeText(\''+p.cupom+'\').then(()=>toast(\'✅ Cupom copiado!\')).catch(()=>toast(\'Cupom: '+p.cupom+'\'))">Copiar</button></div>':''}
         <div class="btns">
-          ${tk?'<a class="btn tk" href="'+tk+'" target="_blank" onclick="addClick(\''+p.id+'\',\'tiktok\')">🛒 TikTok Shop (link inteligente)</a>':''}
-          ${ml?'<a class="btn ml" href="'+ml+'" target="_blank" onclick="addClick(\''+p.id+'\',\'mercado_livre\')">💛 Mercado Livre (link inteligente)</a>':''}
+          ${tk?'<a class="btn tk" href="'+tk+'" target="_blank" onclick="addClick(\''+p.id+'\',\'tiktok\')">🛒 TikTok Shop</a>':''}
+          ${ml?'<a class="btn ml" href="'+ml+'" target="_blank" onclick="addClick(\''+p.id+'\',\'mercado_livre\')">💛 Mercado Livre</a>':''}
           <a class="btn zp" href="https://wa.me/${zap}?text=${encodeURIComponent('Olá Ivan! Vi '+p.nome+' - '+formatPreco(p.preco)+' na sua vitrine https://ivancm347.github.io/Minha-Vitrine/')}" target="_blank" onclick="addClick('${p.id}','whatsapp')">💬 Zap (11) 97698-3978</a>
           <button class="btn share" onclick="compartilhar(produtos.find(x=>x.id==='${p.id}'))">📤 Compartilhar</button>
         </div>
-        ${totalClicks>0?'<div class="clicks">👁️ '+totalClicks+' cliques separados: '+(clicks?'TT:'+(clicks.tiktok||0)+' ML:'+(clicks.mercado_livre||0)+' ZAP:'+(clicks.whatsapp||0):'')+' (NOVO V6)</div>':'<div class="clicks">V6.2: clicks separados por plataforma - NOVO</div>'}
       </div>`;
     grid.appendChild(card);
   });
 }
 function clearSearch(){ document.getElementById('search').value=''; render(); }
 document.getElementById('search').addEventListener('input', render);
-setInterval(()=>{ const el=document.getElementById('viewing'); if(el) el.textContent=Math.floor(10+Math.random()*24); },3000);
 updateStats(); buildFilters(); render();
 fetch('./produtos.json?v='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(data=>{
   if(Array.isArray(data) && data.length>0){
-    produtos=data; updateStats(); buildFilters(); render(); console.log('V6.2: produtos.json carregado', data.length);
+    produtos=data; updateStats(); buildFilters(); render(); 
   }
-}).catch(e=>{console.log('V6.2: produtos.json NAO carregou, usando embutidos',e);});
+}).catch(e=>{console.log('produtos.json nao carregou, usando embutidos',e);});
 </script>
 </body>
 </html>
