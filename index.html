@@ -213,8 +213,8 @@ function render(){
         <div class="btns">
           ${tk?'<a class="btn tk" href="'+tk+'" target="_blank" onclick="addClick(\''+p.id+'\',\'tiktok\')">🛒 TikTok Shop (link inteligente)</a>':''}
           ${ml?'<a class="btn ml" href="'+ml+'" target="_blank" onclick="addClick(\''+p.id+'\',\'mercado_livre\')">💛 Mercado Livre (link inteligente)</a>':''}
-          <a class="btn zp" href="https://wa.me/'+zap+'?text='+encodeURIComponent('Olá Ivan! Vi '+p.nome+' - '+formatPreco(p.preco)+' na sua vitrine V6.2 https://ivancm347.github.io/Minha-Vitrine/')+'" target="_blank" onclick="addClick(\''+p.id+'\',\'whatsapp\')">💬 Zap (11) 97698-3978</a>
-          <button class="btn share" onclick="compartilhar(produtos.find(x=>x.id===\''+p.id+'\'))">📤 Compartilhar (NOVO V6)</button>
+          <a class="btn zp" href="https://wa.me/${zap}?text=${encodeURIComponent('Olá Ivan! Vi '+p.nome+' - '+formatPreco(p.preco)+' na sua vitrine https://ivancm347.github.io/Minha-Vitrine/')}" target="_blank" onclick="addClick('${p.id}','whatsapp')">💬 Zap (11) 97698-3978</a>
+          <button class="btn share" onclick="compartilhar(produtos.find(x=>x.id==='${p.id}'))">📤 Compartilhar</button>
         </div>
         ${totalClicks>0?'<div class="clicks">👁️ '+totalClicks+' cliques separados: '+(clicks?'TT:'+(clicks.tiktok||0)+' ML:'+(clicks.mercado_livre||0)+' ZAP:'+(clicks.whatsapp||0):'')+' (NOVO V6)</div>':'<div class="clicks">V6.2: clicks separados por plataforma - NOVO</div>'}
       </div>`;
