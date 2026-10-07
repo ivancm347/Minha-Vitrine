@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gerenciador de Produtos - Vitrine</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#151515;--border:#242424;--pink:#fe2c55;--cyan:#25f4ee;--yellow:#ffe600;--green:#25d366;--orange:#ee4d2d}
+body{background:var(--bg);color:#fff;font-family:Inter,system-ui;padding:20px;line-height:1.4}
+.container{max-width:1000px;margin:0 auto}
+h1{font-size:24px;margin-bottom:20px;color:var(--cyan);text-align:center}
+.actions{display:flex;gap:10px;margin-bottom:20px;justify-content:space-between;flex-wrap:wrap}
+.btn{padding:10px 16px;border-radius:8px;border:0;font-weight:800;cursor:pointer;font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn-primary{background:var(--pink);color:#fff}
+.btn-success{background:var(--green);color:#fff}
+.btn-secondary{background:var(--card);color:#fff;border:1px solid var(--border)}
+.btn-danger{background:#e74c3c;color:#fff}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px;display:none}
+.form-card.active{display:block}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:11px;color:#888;font-weight:700;text-transform:uppercase}
+.field input, .field select, .field textarea{background:#000;border:1px solid var(--border);color:#fff;padding:10px;border-radius:6px;font-size:13px;outline:none}
+.field input:focus{border-color:var(--cyan)}
+.field.full{grid-column:1/-1}
+.img-preview-wrap{display:flex;align-items:center;gap:10px;margin-top:4px}
+.img-preview{width:50px;height:50px;object-fit:contain;background:#fff;border-radius:6px;border:1px solid var(--border)}
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}
+th, td{padding:12px;border-bottom:1px solid var(--border)}
+th{background:#111;color:#888;font-size:11px;text-transform:uppercase}
+tr:hover{background:#1a1a1a}
+.thumb-mini{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:4px}
+.badge-stock{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:800}
+.stock-in{background:var(--green);color:#fff}
+.stock-out{background:#e74c3c;color:#fff}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚙️ Gerenciador da Vitrine</h1>
+  
+  <div class="actions">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="openForm()">➕ Novo Produto</button>
+      <label class="btn btn-secondary">
+        📂 Abrir JSON
+        <input type="file" id="jsonFileInput" accept=".json" style="display:none" onchange="importJSON(event)">
+      </label>
+      <a class="btn btn-secondary" href="index.html" target="_blank">👁️ Ver Vitrine</a>
+    </div>
+    <button class="btn btn-success" onclick="downloadJSON()">💾 Baixar produtos.json</button>
+  </div>
+
+  <!-- Formulario -->
+  <div class="form-card" id="formCard">
+    <h2 id="formTitle" style="font-size:16px;margin-bottom:14px;color:var(--yellow)">Adicionar Produto</h2>
+    <form id="prodForm" onsubmit="saveProduct(event)">
+      <input type="hidden" id="editIndex" value="-1"/>
+      <div class="form-grid">
+        <div class="field"><label>ID Único (slug)</label><input type="text" id="id" required placeholder="ex: chave-ryoku-600nm"/></div>
+        <div class="field"><label>Nome do Produto</label><input type="text" id="nome" required placeholder="Nome completo"/></div>
+        <div class="field"><label>Categoria</label><input type="text" id="categoria" required placeholder="ex: Ferramentas"/></div>
+        <div class="field"><label>Marca</label><input type="text" id="marca" placeholder="ex: INGCO"/></div>
+        <div class="field"><label>Preço "De" (R$)</label><input type="number" step="0.01" id="preco_de" placeholder="0"/></div>
+        <div class="field"><label>Preço "Por" (R$)</label><input type="number" step="0.01" id="preco" required placeholder="149.90"/></div>
+        <div class="field">
+          <label>Stock</label>
+          <select id="estoque">
+            <option value="true">Disponível</option>
+            <option value="false">Esgotado</option>
+          </select>
+        </div>
+        <div class="field"><label>Badge / Destaque</label><input type="text" id="badge" placeholder="ex: OFERTA -20%"/></div>
+        
+        <!-- Campo de Imagem com Seleção de Ficheiro -->
+        <div class="field full">
+          <label>Imagem do Produto</label>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="imagem" required placeholder="imagens/produto.jpg" style="flex:1" oninput="updatePreview()">
+            <label class="btn btn-secondary" style="margin:0">
+              🖼️ Escolher Imagem
+              <input type="file" id="imgFileInput" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+            </label>
+          </div>
+          <div class="img-preview-wrap">
+            <img id="previewImg" src="" class="img-preview" alt="Pré-visualização" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>'">
+            <small id="imgPathInfo" style="color:#888">Nenhuma imagem selecionada</small>
+          </div>
+        </div>
+
+        <div class="field"><label>Link TikTok Shop</label><input type="text" id="link_tiktok" placeholder="https://..."/></div>
+        <div class="field"><label>Link Shopee</label><input type="text" id="link_shopee" placeholder="https://..."/></div>
+        <div class="field"><label>Link Mercado Livre</label><input type="text" id="link_ml" placeholder="https://..."/></div>
+        <div class="field full">
+          <label>Vídeo do Produto (opcional)</label>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="video" placeholder="videos/furadeira-hanabi-lj2005.mp4" style="flex:1" oninput="updateVideoPreview()"/>
+            <label class="btn btn-secondary" style="margin:0">
+              🎥 Escolher Vídeo
+              <input type="file" id="videoFileInput" accept="video/*" style="display:none" onchange="handleVideoFileSelect(event)">
+            </label>
+          </div>
+          <small id="videoPathInfo" style="color:#888;margin-top:4px;display:block">Nenhum vídeo selecionado - deixe em branco se não tiver vídeo</small>
+          <video id="previewVideo" style="display:none;max-width:200px;max-height:120px;margin-top:8px;border-radius:8px;background:#000" controls muted></video>
+        </div>
+        <div class="field"><label>WhatsApp (Apenas números)</label><input type="text" id="whatsapp" value="5511976983978"/></div>
+        <div class="field full"><label>Descrição</label><textarea id="descricao" rows="2" placeholder="Descrição resumida do produto"></textarea></div>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:8px">
+        <button type="submit" class="btn btn-success">Salvar Produto</button>
+        <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tabela de Produtos -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Imagem</th>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Preço</th>
+          <th>Stock</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+let produtos = [];
+
+function loadProducts(){
+  fetch('./produtos.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(data=>{ produtos = data; renderTable(); })
+    .catch(e=>console.error('Erro ao carregar produtos.json', e));
+}
+
+function renderTable(){
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  produtos.forEach((p, index)=>{
+    const tr = document.createElement('tr');
+    const path = p.imagem.startsWith('imagens/') ? p.imagem : 'imagens/' + p.imagem;
+    tr.innerHTML = `
+      <td><img src="./${path}" class="thumb-mini" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>'"></td>
+      <td><b>${p.nome}</b><br><small style="color:#666">${p.id}</small></td>
+      <td>${p.categoria}</td>
+      <td><span style="color:var(--cyan)">R$ ${p.preco.toFixed(2)}</span></td>
+      <td><span class="badge-stock ${p.estoque !== false ? 'stock-in' : 'stock-out'}">${p.estoque !== false ? 'Em Stock' : 'Esgotado'}</span></td>
+      <td>
+        <button class="btn btn-secondary" onclick="editProduct(${index})">✏️ Editar</button>
+        <button class="btn btn-danger" onclick="deleteProduct(${index})">🗑️ Excluir</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function updatePreview(){
+  const val = document.getElementById('imagem').value.trim();
+  const img = document.getElementById('previewImg');
+  const info = document.getElementById('imgPathInfo');
+  if(val){
+    const path = val.startsWith('imagens/') || val.startsWith('http') ? val : 'imagens/' + val;
+    img.src = path;
+    info.textContent = 'Caminho: ' + path;
+  } else {
+    img.src = '';
+    info.textContent = 'Nenhuma imagem selecionada';
+  }
+}
+
+function handleFileSelect(e){
+  const file = e.target.files[0];
+  if(file){
+    const cleanName = file.name.replace(/\s+/g, '-');
+    const relativePath = 'imagens/' + cleanName;
+    document.getElementById('imagem').value = relativePath;
+    updatePreview();
+  }
+}
+
+function handleVideoFileSelect(e){
+  const file = e.target.files[0];
+  const info = document.getElementById('videoPathInfo');
+  const preview = document.getElementById('previewVideo');
+  if(file){
+    const cleanName = file.name.replace(/\s+/g, '-');
+    const relativePath = 'videos/' + cleanName;
+    document.getElementById('video').value = relativePath;
+    info.textContent = 'Vídeo: ' + relativePath + ' (' + (file.size/1024/1024).toFixed(2) + ' MB)';
+    info.style.color = '#25f4ee';
+    // preview local
+    const url = URL.createObjectURL(file);
+    preview.src = url;
+    preview.style.display = 'block';
+  } else {
+    info.textContent = 'Nenhum vídeo selecionado - deixe em branco se não tiver vídeo';
+    info.style.color = '#888';
+    preview.style.display = 'none';
+    preview.src = '';
+  }
+}
+
+function updateVideoPreview(){
+  const val = document.getElementById('video').value.trim();
+  const info = document.getElementById('videoPathInfo');
+  const preview = document.getElementById('previewVideo');
+  if(val){
+    info.textContent = 'Caminho: ' + val;
+    info.style.color = '#888';
+    // se for URL http, tenta preview
+    if(val.startsWith('http')){
+      preview.src = val;
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  } else {
+    info.textContent = 'Nenhum vídeo selecionado - deixe em branco se não tiver vídeo';
+    preview.style.display = 'none';
+  }
+}
+
+function openForm(){
+  document.getElementById('prodForm').reset();
+  document.getElementById('editIndex').value = "-1";
+  document.getElementById('formTitle').textContent = "Adicionar Produto";
+  document.getElementById('estoque').value = "true";
+  updatePreview();
+  document.getElementById('formCard').classList.add('active');
+}
+
+function closeForm(){
+  document.getElementById('formCard').classList.remove('active');
+}
+
+function editProduct(index){
+  const p = produtos[index];
+  document.getElementById('editIndex').value = index;
+  document.getElementById('id').value = p.id;
+  document.getElementById('nome').value = p.nome;
+  document.getElementById('categoria').value = p.categoria;
+  document.getElementById('marca').value = p.marca || '';
+  document.getElementById('preco_de').value = p.preco_de || 0;
+  document.getElementById('preco').value = p.preco;
+  document.getElementById('estoque').value = p.estoque !== false ? "true" : "false";
+  document.getElementById('badge').value = p.badge || '';
+  document.getElementById('imagem').value = p.imagem;
+  document.getElementById('link_tiktok').value = p.links?.tiktok || '';
+  document.getElementById('link_shopee').value = p.links?.shopee || '';
+  document.getElementById('link_ml').value = p.links?.mercado_livre || '';
+  document.getElementById('video').value = p.video || '';
+  updateVideoPreview();
+  document.getElementById('whatsapp').value = p.whatsapp || '5511976983978';
+  document.getElementById('descricao').value = p.descricao || '';
+  
+  updatePreview();
+  document.getElementById('formTitle').textContent = "Editar Produto";
+  document.getElementById('formCard').classList.add('active');
+}
+
+function saveProduct(e){
+  e.preventDefault();
+  const idx = parseInt(document.getElementById('editIndex').value);
+  const newProd = {
+    id: document.getElementById('id').value.trim(),
+    nome: document.getElementById('nome').value.trim(),
+    categoria: document.getElementById('categoria').value.trim(),
+    marca: document.getElementById('marca').value.trim(),
+    preco_de: parseFloat(document.getElementById('preco_de').value) || 0,
+    preco: parseFloat(document.getElementById('preco').value) || 0,
+    estoque: document.getElementById('estoque').value === "true",
+    destaque: true,
+    badge: document.getElementById('badge').value.trim(),
+    descricao: document.getElementById('descricao').value.trim(),
+    imagem: document.getElementById('imagem').value.trim(),
+    imagem_alt: "",
+    links: {
+      tiktok: document.getElementById('link_tiktok').value.trim(),
+      shopee: document.getElementById('link_shopee').value.trim(),
+      mercado_livre: document.getElementById('link_ml').value.trim()
+    },
+    video: document.getElementById('video').value.trim(),
+    cupom: "",
+    avaliacao: 4.8,
+    whatsapp: document.getElementById('whatsapp').value.trim()
+  };
+
+  if(idx >= 0){ produtos[idx] = newProd; }
+  else { produtos.push(newProd); }
+
+  renderTable();
+  closeForm();
+}
+
+function deleteProduct(index){
+  if(confirm(`Tem certeza que deseja excluir "${produtos[index].nome}"?`)){
+    produtos.splice(index, 1);
+    renderTable();
+  }
+}
+
+function importJSON(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt){
+    try {
+      produtos = JSON.parse(evt.target.result);
+      renderTable();
+      alert('produtos.json carregado com sucesso!');
+    } catch(err) {
+      alert('Erro ao ler o ficheiro JSON');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function downloadJSON(){
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(produtos, null, 2));
+  const dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", "produtos.json");
+  dlAnchorElem.click();
+}
+
+loadProducts();
+</script>
+</body>
+</html>
