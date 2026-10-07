@@ -46,29 +46,6 @@
     "whatsapp": "5511976983978"
   },
   {
-    "id": "caixa-monobloco-irwin-iwst18800-la",
-    "nome": "Caixa Monobloco de Ferramentas 18\" Irwin IWST18800-LA com Rodas 45CM Azul",
-    "categoria": "Ferramentas",
-    "marca": "Irwin",
-    "preco_de": 389.9,
-    "preco": 294.9,
-    "estoque": true,
-    "destaque": true,
-    "badge": "MAIS VENDIDA 50KG",
-    "descricao": "Caixa Plástica Monobloco Irwin IWST18800-LA 18\" 45cm com rodas resistentes e alça deslizante. Volume útil 37L, suporta até 50kg, compartimento grande para ferramentas elétricas (furadeira, tico-tico), bandeja interna removível e organizadores na tampa. Trava para cadeado. Dimensões 43,5x29x62cm. Ideal para pedreiro, eletricista, mecânico e técnico.",
-    "imagem": "imagens/caixa-monobloco-irwin-iwst18800-la.jpg",
-    "imagem_alt": "",
-    "links": {
-      "tiktok": "",
-      "shopee": "https://s.shopee.com.br/AKbB9stWOL",
-      "mercado_livre": "https://meli.la/1WbMxKv"
-    },
-    "video": "videos/Caixa-Monobloco-Rodas.mp4",
-    "cupom": "",
-    "avaliacao": 4.8,
-    "whatsapp": "5511976983978"
-  },
-  {
     "id": "furadeira-hanabi-lj2005-21v",
     "nome": "Furadeira Parafusadeira Sem Fio Hanabi LJ-2005 21V 4.0Ah Brushless 80Nm com Maleta e 2 Baterias",
     "categoria": "Ferramentas",
@@ -225,6 +202,29 @@
       "mercado_livre": "https://meli.la/1pX1ov6"
     },
     "video": "videos/Hanabi-Brushless-CY-3006.mp4",
+    "cupom": "",
+    "avaliacao": 4.8,
+    "whatsapp": "5511976983978"
+  },
+  {
+    "id": "irwin-iwst18800-la",
+    "nome": "Caixa Monobloco ingco",
+    "categoria": "Ferramentas",
+    "marca": "irwin",
+    "preco_de": 450,
+    "preco": 297,
+    "estoque": true,
+    "destaque": true,
+    "badge": "",
+    "descricao": "Descrição\nNa G2M Comércio , qualidade, inovação e praticidade são um para transformar sua rotina. Oferecemos uma seleção de produtos cuidadosamente selecionados para trazer mais eficiência e conforto ao seu dia a dia. Seja para facilitar suas tarefas, otimizar seu tempo ou adicionar mais conveniência, você encontra aqui as melhores soluções. Adquira já o seu produto e experimente a excelência que só a G2M Comércio pode oferecer!\n\nCaixa Irwin Monobloco\n\nAlça articulável com trava deslizante para melhor transporte.\nFechos reforçados.\nCompartimento grande para armazenagem de ferramentas elétricas.\nCaixa reforçada para maior durabilidade.\nCompartimento superior com bandeja interna.\nAbertura deslizante para facilitar o acesso aos compartimentos.\nRodas largas ideais para você enfrentar diferentes terrenos.\n\nInformações Técnicas:\nMarca: Irwin\nModelo: IWST18800-LA\nCapacidade de carga interna: 35 kg\nVolume útil: 37 L\nComprimento: 43,5 cm\nLargura: 29 cm\nAltura: 62 cm\nImagens Meramente Ilustrativas",
+    "imagem": "imagens/caixa-monobloco-irwin-iwst18800-la.jpg",
+    "imagem_alt": "",
+    "links": {
+      "tiktok": "",
+      "shopee": "https://s.shopee.com.br/7KxZk6poPL",
+      "mercado_livre": "https://meli.la/1Lx9gS1"
+    },
+    "video": "videos/Caixa-Monobloco-Rodas.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
