@@ -4,22 +4,22 @@
     "nome": "Parafusadeira Drywall INGCO P20S 20V Brushless 2 Baterias 2.0Ah + Carregador + Maleta",
     "categoria": "Ferramentas",
     "marca": "INGCO",
-    "preco_de": 899.0,
-    "preco": 699.0,
+    "preco_de": 899,
+    "preco": 699,
     "estoque": true,
     "destaque": true,
     "badge": "BRUSHLESS P20S",
     "descricao": "Parafusadeira para Drywall INGCO P20S Brushless 20V MAX. Motor BL sem escovas, 2 baterias 20V 2.0Ah + carregador rápido, 5 bits + suporte magnético e maleta.",
     "imagem": "imagens/parafusadeira-drywall-ingco-p20s-20v.jpg",
-    "imagem_alt": "Parafusadeira Drywall INGCO P20S",
-    "video": "",
+    "imagem_alt": "",
     "links": {
       "tiktok": "",
       "shopee": "https://s.shopee.com.br/3qNhRwTdSF",
       "mercado_livre": "https://meli.la/33LXrBN"
     },
+    "video": "",
     "cupom": "",
-    "avaliacao": 4.9,
+    "avaliacao": 4.8,
     "whatsapp": "5511976983978"
   },
   {
@@ -86,7 +86,7 @@
       "shopee": "https://s.shopee.com.br/3g4GgKuZCJ",
       "mercado_livre": "https://meli.la/1UibzB3"
     },
-    "video": "",
+    "video": "videos/furadeira-hanabi-lj2005.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -109,7 +109,7 @@
       "shopee": "https://s.shopee.com.br/1qccPNVvfh",
       "mercado_livre": "https://meli.la/1vxMTrX"
     },
-    "video": "",
+    "video": "videos/nivel-laser-3d-ingco-20v.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -132,7 +132,7 @@
       "shopee": "https://s.shopee.com.br/1gJBbjQ1ZO",
       "mercado_livre": "https://meli.la/1ZE8yje"
     },
-    "video": "",
+    "video": "videos/Pinador-Para-Concreto-42v.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -155,7 +155,7 @@
       "shopee": "https://s.shopee.com.br/905mLlWq2d",
       "mercado_livre": "https://meli.la/1i1EZxD"
     },
-    "video": "",
+    "video": "videos/Chave-De-Impacto-Brushless-600.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -178,7 +178,7 @@
       "shopee": "https://s.shopee.com.br/1VzlQ7Mcqk",
       "mercado_livre": "https://meli.la/1P9GbCW"
     },
-    "video": "",
+    "video": "videos/Mesa-V8+Microfone-Bm800.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -201,7 +201,7 @@
       "shopee": "https://s.shopee.com.br/8fSvxUuLyl",
       "mercado_livre": "https://meli.la/2KFcaXf"
     },
-    "video": "",
+    "video": "videos/Microfone-de-Lapela.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -224,7 +224,7 @@
       "shopee": "https://s.shopee.com.br/60SAmk0njK",
       "mercado_livre": "https://meli.la/1pX1ov6"
     },
-    "video": "",
+    "video": "videos/Hanabi-Brushless-CY-3006.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
