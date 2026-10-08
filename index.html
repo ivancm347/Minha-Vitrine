@@ -104,7 +104,9 @@ body{background:var(--bg);color:#fff;font-family:Inter,system-ui;line-height:1.4
       <h3 id="videoModalTitle">Vídeo do Produto</h3>
       <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
     </div>
-    <video id="modalVideo" controls playsinline controlsList="nodownload" preload="metadata"></video>
+    <video id="modalVideo" controls playsinline controlsList="nodownload" preload="metadata">
+    <source id="modalVideoSource" src="" type="video/mp4">
+  </video>
     <div id="videoError" style="display:none;padding:20px;text-align:center;color:#ff6b6b;font-size:13px;background:#1a0000;"></div>
   </div>
 </div>
@@ -175,6 +177,7 @@ function imgHTML(p){
 function openVideoModal(videoSrc, nome){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('modalVideo');
+  const source = document.getElementById('modalVideoSource');
   const title = document.getElementById('videoModalTitle');
   const errorDiv = document.getElementById('videoError');
   if(!videoSrc) return;
@@ -182,23 +185,20 @@ function openVideoModal(videoSrc, nome){
   errorDiv.style.display='none';
   errorDiv.textContent='';
   video.style.display='block';
-  // Remove old listeners
-  video.onerror = null;
-  video.onloadeddata = null;
+  const cleanPath = String(videoSrc).trim().replace(/^\.\//, '');
+  const videoUrl = new URL(cleanPath, document.baseURI).href;
   video.onerror = function(){
     video.style.display='none';
     errorDiv.style.display='block';
-    errorDiv.innerHTML = '⚠️ Vídeo não encontrado:<br><code>'+videoSrc+'</code><br><br>Verifique:<br>1. Arquivo está na pasta <b>videos/</b> no GitHub?<br>2. Nome está minúsculo sem acento?<br>3. Tamanho < 100MB?';
-    console.error('Video 404:', videoSrc);
+    errorDiv.innerHTML = '⚠️ Não foi possível carregar este vídeo.<br><small>Confira se o arquivo existe na pasta <b>videos/</b> e se o nome está exatamente igual ao cadastrado.</small>';
+    console.error('Falha ao carregar vídeo:', videoUrl);
   };
-  video.onloadeddata = function(){
-    errorDiv.style.display='none';
-    video.play().catch(e=>console.log('Autoplay bloqueado', e));
-  };
-  video.src = './' + videoSrc;
+  video.onloadedmetadata = function(){ errorDiv.style.display='none'; };
+  source.src = videoUrl;
+  video.load();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  video.load();
+  video.play().catch(()=>{});
 }
 function closeVideoModal(){
   const modal = document.getElementById('videoModal');
@@ -229,7 +229,7 @@ function render(){
     const hasVideo = videoPath !== '';
     const card=document.createElement('div'); card.className='card '+(p.preco_de>p.preco&&emEstoque?'oferta':'')+(emEstoque?'':' esgotado');
     card.innerHTML=`
-      <div class="thumb ${hasVideo?'has-video':''}" ${hasVideo?`onclick="openVideoModal('${videoPath.replace(/'/g, "\'")}', '${p.nome.replace(/'/g, "\'")}')"`:''}>
+      <div class="thumb ${hasVideo?'has-video':''}" data-video="${hasVideo ? encodeURIComponent(videoPath) : ''}" data-name="${encodeURIComponent(p.nome)}">
         ${emEstoque ? '<span class="badge">'+(p.badge||p.categoria)+'</span>' : '<span class="badge-esgotado">Esgotado</span>'}
         <button class="fav-btn ${fav?'active':''}" onclick="event.stopPropagation(); toggleFav('${p.id}')">${fav?'❤️':'🤍'}</button>
         ${imgHTML(p)}
@@ -243,15 +243,32 @@ function render(){
           <span class="preco-atual">Por: ${formatPreco(p.preco)}</span>
         </div>
         <div class="btns">
-          ${hasVideo?`<button class="btn btn-video" onclick="openVideoModal('${videoPath.replace(/'/g, "\'")}', '${p.nome.replace(/'/g, "\'")}')">▶️ Ver Vídeo</button>`:''}
+          ${hasVideo?'<button class="btn btn-video" type="button" data-video-open>▶️ Ver Vídeo</button>':''}
           ${p.links?.tiktok?'<a class="btn tk" href="'+p.links.tiktok+'" target="_blank">🛒 TikTok Shop</a>':''}
           ${p.links?.shopee?'<a class="btn sp" href="'+p.links.shopee+'" target="_blank">🧡 Shopee</a>':''}
           ${p.links?.mercado_livre?'<a class="btn ml" href="'+p.links.mercado_livre+'" target="_blank">💛 Mercado Livre</a>':''}
           <a class="btn zp" href="https://wa.me/${p.whatsapp||ZAP_PADRAO}?text=${encodeURIComponent('Olá Ivan! Vi '+p.nome+' na sua vitrine')}" target="_blank">💬 WhatsApp</a>
-          <button class="btn share" onclick="shareProduct('${p.nome.replace(/'/g, "\'")}')">📲 Partilhar Oferta</button>
+          <button class="btn share" type="button" data-share>📲 Partilhar Oferta</button>
         </div>
       </div>`;
     grid.appendChild(card);
+  });
+  grid.querySelectorAll('.thumb.has-video').forEach(thumb=>{
+    thumb.addEventListener('click', ()=>{
+      openVideoModal(decodeURIComponent(thumb.dataset.video || ''), decodeURIComponent(thumb.dataset.name || ''));
+    });
+  });
+  grid.querySelectorAll('[data-video-open]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const thumb = btn.closest('.card')?.querySelector('.thumb.has-video');
+      if(thumb) openVideoModal(decodeURIComponent(thumb.dataset.video || ''), decodeURIComponent(thumb.dataset.name || ''));
+    });
+  });
+  grid.querySelectorAll('[data-share]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const nome = btn.closest('.card')?.querySelector('.nome')?.textContent?.trim() || 'produto';
+      shareProduct(nome);
+    });
   });
 }
 function clearSearch(){ document.getElementById('search').value=''; render(); }
