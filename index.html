@@ -187,10 +187,19 @@ function openVideoModal(videoSrc, nome){
   video.style.display='block';
   const cleanPath = String(videoSrc).trim().replace(/^\.\//, '');
   const videoUrl = new URL(cleanPath, document.baseURI).href;
+  let tentouRaw = false;
   video.onerror = function(){
+    if(!tentouRaw){
+      tentouRaw = true;
+      const rawVideoUrl = new URL(cleanPath, RAW_BASE).href;
+      console.warn('Vídeo não carregou pelo Pages. Tentando cópia do GitHub:', rawVideoUrl);
+      source.src = rawVideoUrl;
+      video.load();
+      return;
+    }
     video.style.display='none';
     errorDiv.style.display='block';
-    errorDiv.innerHTML = '⚠️ Não foi possível carregar este vídeo.<br><small>Confira se o arquivo existe na pasta <b>videos/</b> e se o nome está exatamente igual ao cadastrado.</small>';
+    errorDiv.innerHTML = '⚠️ Não foi possível carregar este vídeo.<br><small>O arquivo pode não estar publicado ou o nome pode estar diferente do cadastro.</small>';
     console.error('Falha ao carregar vídeo:', videoUrl);
   };
   video.onloadedmetadata = function(){ errorDiv.style.display='none'; };
@@ -206,6 +215,7 @@ function closeVideoModal(){
   const errorDiv = document.getElementById('videoError');
   video.pause();
   video.removeAttribute('src');
+  source.src='';
   video.load();
   errorDiv.style.display='none';
   modal.classList.remove('active');
@@ -273,14 +283,37 @@ function render(){
 }
 function clearSearch(){ document.getElementById('search').value=''; render(); }
 document.getElementById('search').addEventListener('input', render);
-fetch('./produtos.json?v='+Date.now()).then(r=>{
-  if(!r.ok) throw new Error('produtos.json não encontrado - status '+r.status);
-  return r.json();
-}).then(data=>{
-  produtos=data; updateStats(); buildFilters(); render();
+const RAW_BASE = 'https://raw.githubusercontent.com/ivancm347/Minha-Vitrine/main/';
+
+async function loadProducts(){
+  const urls = [
+    './produtos.json?v=' + Date.now(),
+    RAW_BASE + 'produtos.json'
+  ];
+  let lastError = null;
+  for(const url of urls){
+    try{
+      const r = await fetch(url, {cache:'no-store'});
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const data = await r.json();
+      if(!Array.isArray(data)) throw new Error('Formato inválido');
+      return data;
+    }catch(e){
+      lastError = e;
+      console.warn('Falha ao carregar:', url, e);
+    }
+  }
+  throw lastError || new Error('Não foi possível carregar os produtos.');
+}
+
+loadProducts().then(data=>{
+  produtos=data;
+  updateStats();
+  buildFilters();
+  render();
 }).catch(e=>{
-  console.error('Erro ao carregar json',e);
-  document.getElementById('grid').innerHTML = '<div class="empty">❌ Erro ao carregar produtos.json<br><br>'+e.message+'<br><br>Verifique se o arquivo está na raiz do repositório.</div>';
+  console.error('Erro ao carregar produtos.json',e);
+  document.getElementById('grid').innerHTML = '<div class="empty">❌ Não foi possível carregar os produtos.<br><br>'+e.message+'<br><br>Recarregue a página. Se continuar, o arquivo produtos.json não está sendo servido pelo GitHub Pages.</div>';
 });
 </script>
 </body>
