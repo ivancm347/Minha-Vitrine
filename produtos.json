@@ -228,5 +228,28 @@
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
+  },
+  {
+    "id": "Knock-12L",
+    "nome": "Lixeira Automática Knock 12L – Sem Toque",
+    "categoria": "Para Casa",
+    "marca": "Knock",
+    "preco_de": 89,
+    "preco": 49,
+    "estoque": true,
+    "destaque": true,
+    "badge": "",
+    "descricao": "Transforme sua rotina com mais praticidade e higiene!\n\nA Lixeira Automática 12L com Sensor Infravermelho é perfeita para manter sua casa limpa, moderna e livre de odores.\n\n\n\n✨ Principais Benefícios:\n\n\n\n✅ Abertura Automática Sem Toque\n\nSensor inteligente detecta o movimento e abre a tampa automaticamente, evitando contato com sujeira.\n\n\n\n✅ Tecnologia Antiodor\n\nVedação eficiente que impede a saída de maus odores, mantendo o ambiente sempre agradável.\n\n\n\n✅ Design Moderno e Compacto\n\nIdeal para qualquer ambiente: cozinha, banheiro, quarto ou escritório.\n\n\n\n✅ Silenciosa e Econômica\n\nSistema de abertura suave e baixo consumo de energia.\n\n\n\n✅ Fácil de Usar e Limpar\n\nCompatível com sacos de lixo comuns e fácil manutenção.\n\n\n\n📦 Especificações:\n\n\n\nCapacidade: 12 Litros\n\n\n\nTipo: Automática com Sensor Infravermelho\n\n\n\nMaterial: Plástico resistente de alta qualidade\n\n\n\nAlimentação: Pilhas (não inclusas)\n\n\n\nCor: Branco com acabamento moderno\n\n\n\nUso: Cozinha, Banheiro, Escritório, Quarto\n\n\n\n🎯 Por que escolher este produto?\n\n\n\n✔ Mais higiene no dia a dia\n\n✔ Evita contato com bactérias\n\n✔ Ideal para ambientes modernos\n\n✔ Praticidade com tecnologia\n\n\n\n🚀 Garanta já a sua!\n\n\n\nDeixe sua casa mais elegante, prática e livre de odores com essa lixeira inteligente.",
+    "imagem": "imagens/Lixeira-Automátic-Knock-12L.jpg",
+    "imagem_alt": "",
+    "links": {
+      "tiktok": "",
+      "shopee": "https://s.shopee.com.br/9zyKxTAedF",
+      "mercado_livre": "https://meli.la/2A7Us76"
+    },
+    "video": "videos/Knock-12L.mp4",
+    "cupom": "",
+    "avaliacao": 4.8,
+    "whatsapp": "5511976983978"
   }
 ]
