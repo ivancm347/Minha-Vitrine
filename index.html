@@ -172,7 +172,8 @@ function imgHTML(p){
   const file = (p.imagem||'').trim();
   if(!file) return '<div style="font-size:48px">🛍️</div>';
   const path = file.startsWith('imagens/') || file.startsWith('http') ? file : 'imagens/' + file;
-  return '<img src="./'+path+'" alt="'+p.nome+'" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300/151515/888?text=Sem+Imagem';">';
+  const safeAlt = String(p.nome || '').replace(/"/g,'&quot;');
+  return '<img src="./'+path+'" alt="'+safeAlt+'" loading="lazy" onerror="this.onerror=null;this.src=\\'https://via.placeholder.com/300x300/151515/888?text=Sem+Imagem\\';">';
 }
 function openVideoModal(videoSrc, nome){
   const modal = document.getElementById('videoModal');
@@ -213,6 +214,7 @@ function closeVideoModal(){
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('modalVideo');
   const errorDiv = document.getElementById('videoError');
+  const source = document.getElementById('modalVideoSource');
   video.pause();
   video.removeAttribute('src');
   source.src='';
