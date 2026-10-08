@@ -34,13 +34,13 @@
     "badge": "MAIS VENDIDO",
     "descricao": "Alicate 5 em 1: descasca, corta, crimpa terminais, corta parafusos e decapa cabos 0,2 a 6mm.",
     "imagem": "imagens/capa-alicate-5em1-mais-vendido.webp",
-    "imagem_alt": "",
+    "imagem_alt": "Alicate descascador",
+    "video": "videos/alicate-descascador-fios-5em1.mp4",
     "links": {
       "tiktok": "",
       "shopee": "https://s.shopee.com.br/6VOSbe9qag",
       "mercado_livre": "https://meli.la/32FZHq4"
     },
-    "video": "videos/alicate-descascador-fios-5em1.mp4",
     "cupom": "",
     "avaliacao": 4.8,
     "whatsapp": "5511976983978"
@@ -97,7 +97,7 @@
     "categoria": "Ferramentas",
     "marca": "INGCO",
     "preco_de": 5590,
-    "preco": 3990,
+    "preco": 4450,
     "estoque": true,
     "destaque": true,
     "badge": "OFERTA -24%",
@@ -143,7 +143,7 @@
     "categoria": "Áudio",
     "marca": "BM800",
     "preco_de": 0,
-    "preco": 110,
+    "preco": 142,
     "estoque": true,
     "destaque": true,
     "badge": "Mais Vendido",
@@ -194,7 +194,7 @@
     "destaque": true,
     "badge": "COMBO ML",
     "descricao": "Parafusadeira Hanabi 16.8V Brushless com 2 baterias",
-    "imagem": "imagens/capa-furadeira-hanabi-12v-final.webp",
+    "imagem": "imagens/furadeira_hanabi_FINAL_BLACK_transparente.png",
     "imagem_alt": "",
     "links": {
       "tiktok": "https://shop.tiktok.com/br/pdp/1733726957123503408?_t=ZS-9ACiUc6W7SG",
