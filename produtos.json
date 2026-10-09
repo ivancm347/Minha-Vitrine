@@ -1,5 +1,28 @@
 [
   {
+    "id": "modelador-cabelo-automatico-giratorio-bivolt",
+    "nome": "Modelador de Cabelo Automático Giratório Bivolt com Revestimento Cerâmico",
+    "categoria": "Beleza",
+    "marca": "Modelador Giratório",
+    "preco_de": 200,
+    "preco": 48.99,
+    "estoque": true,
+    "destaque": true,
+    "badge": "OFERTA RELÂMPAGO",
+    "descricao": "Modelador de cabelo elétrico giratório com revestimento cerâmico e bivolt. Confira as opções e as informações atualizadas diretamente na Shopee.",
+    "imagem": "",
+    "imagem_alt": "Modelador de cabelo automático giratório rosa",
+    "links": {
+      "tiktok": "",
+      "shopee": "https://s.shopee.com.br/1B28nTgvT",
+      "mercado_livre": ""
+    },
+    "video": "",
+    "cupom": "",
+    "avaliacao": 4.7,
+    "whatsapp": "5511976983978"
+  },
+  {
     "id": "parafusadeira-drywall-ingco-p20s-20v-brushless",
     "nome": "Parafusadeira Drywall INGCO P20S 20V Brushless 2 Baterias 2.0Ah + Carregador + Maleta",
     "categoria": "Ferramentas",
