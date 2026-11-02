@@ -13,6 +13,43 @@
 .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .destaques-track{scroll-behavior:smooth}
 .card-img{aspect-ratio:1/1; object-fit:cover}
+
+/* Vitrine Premium 2026 */
+:root{color-scheme:light;--ink:#171923;--muted:#687080;--accent:#f05a28;--surface:#fff;--line:#e8e9ed}
+body{background:#f4f5f7!important;color:var(--ink)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:rgba(255,255,255,.94)!important;border-color:#e8e9ed!important;box-shadow:0 5px 24px #17192308}
+header>div{min-height:76px}
+header img{border-color:var(--accent)!important}
+header h1{font-size:16px!important;letter-spacing:-.35px}
+body>div.bg-\[\#111\]{background:radial-gradient(circle at 85% 10%,#3a3e4b 0,#20232d 34%,#11131a 78%)!important}
+body>div.bg-\[\#111\]>div{padding-top:34px!important;padding-bottom:34px!important}
+body>div.bg-\[\#111\] h2{font-size:clamp(25px,4vw,36px)!important;letter-spacing:-1px}
+main{padding-top:28px!important}
+#busca{min-height:50px;border-radius:16px!important;border-color:#e2e5ea!important;box-shadow:0 5px 20px #11182708!important}
+#busca:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px #f05a2820!important}
+#filtros button{transition:.2s;white-space:nowrap}
+#filtros button:hover{border-color:var(--accent)!important}
+#grid{align-items:stretch}
+#grid>div{border:1px solid #e7e9ee!important;border-radius:22px!important;box-shadow:0 5px 20px #11182708;transition:transform .22s,box-shadow .22s}
+#grid>div:hover{transform:translateY(-4px);box-shadow:0 16px 34px #11182712!important}
+#grid .card-img{background:#f7f7f8;object-fit:contain!important;padding:12px;aspect-ratio:1/1}
+#grid h3{font-size:14px!important;line-height:1.4!important;min-height:40px}
+#grid .font-black.text-green-600{color:#16834a!important;font-size:18px!important}
+#grid a{border-radius:12px!important;min-height:39px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:filter .2s,transform .2s}
+#grid a:hover{filter:brightness(.96);transform:translateY(-1px)}
+#destaques>div{border-radius:20px!important;box-shadow:0 5px 18px #1118270a}
+#status{color:#687080}
+#videoModal>div{border-radius:22px!important}
+.vitrine-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 14px}
+.vitrine-count{font-size:12px;color:#687080;font-weight:700}
+.vitrine-sort{background:#fff;border:1px solid #e3e5e9;border-radius:12px;padding:10px 13px;font-size:12px;font-weight:700;color:#272b35;outline:none}
+.vitrine-empty{grid-column:1/-1;background:#fff;border:1px dashed #d5d9e0;border-radius:20px;padding:42px 18px;text-align:center;color:#697181}
+.vitrine-fav{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;background:#fff;color:#4b5563;box-shadow:0 3px 12px #0002;display:grid;place-items:center;border:0;z-index:2}
+.vitrine-fav.active{color:#e23d61}
+.vitrine-fav i{pointer-events:none}
+.vitrine-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#171923;color:#fff;padding:11px 16px;border-radius:30px;font-size:12px;font-weight:700;z-index:100;box-shadow:0 8px 30px #0003}
+@media(max-width:640px){header>div{padding-top:10px!important;padding-bottom:10px!important}header h1{font-size:13px!important}body>div.bg-\[\#111\]>div{padding-top:25px!important;padding-bottom:25px!important}#grid{gap:12px!important}#grid>div{border-radius:18px!important}#grid .card-img{max-height:230px}.vitrine-toolbar{margin-top:14px}}
+
 </style>
 </head>
 <body class="bg-[#f5f5f7] text-gray-900 antialiased">
@@ -56,6 +93,7 @@
     </div>
     <div id="filtros" class="flex gap-2 overflow-x-auto scrollbar-hide items-center"></div>
   </div>
+  <div class="vitrine-toolbar"><span id="resultadoInfo" class="vitrine-count">Preparando sua vitrine...</span><div class="flex items-center gap-2"><button id="favoritosToggle" type="button" class="vitrine-sort"><i class="fa-regular fa-heart mr-1"></i> Favoritos</button><select id="ordenacao" class="vitrine-sort" aria-label="Ordenar produtos"><option value="destaque">Ordenar: recomendados</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="desconto">Maior desconto</option><option value="nome">Nome A–Z</option></select></div></div>
 
   <section id="destaques-section" class="mb-8 hidden">
     <div class="flex items-center justify-between mb-3">
@@ -82,118 +120,106 @@
   </div>
 </div>
 
+
 <script>
-let produtos=[], categoriaAtiva='Todos', autoInterval=null, autoAtivo=true;
-function scrollDestaques(q){ document.getElementById('destaques').scrollBy({left:q, behavior:'smooth'}); }
-function iniciarAuto(){
-  if(autoInterval) clearInterval(autoInterval);
-  autoInterval=setInterval(()=>{
-    if(!autoAtivo) return;
-    const el=document.getElementById('destaques');
-    if(!el) return;
-    if(el.scrollLeft + el.clientWidth >= el.scrollWidth - 20) el.scrollTo({left:0, behavior:'smooth'});
-    else el.scrollBy({left:320, behavior:'smooth'});
-  },3500);
-}
-function toggleAuto(){ autoAtivo=!autoAtivo; document.getElementById('autoToggle').textContent=autoAtivo?'⏸️ PAUSAR':'▶️ GIRAR'; if(autoAtivo) iniciarAuto(); }
-
+'use strict';
+const BASE='https://ivancm347.github.io/Minha-Vitrine/';
+let produtos=[],categoriaAtiva='Todos',autoInterval=null,autoAtivo=true,soFavoritos=false;
+let favoritos=new Set(JSON.parse(localStorage.getItem('minhaVitrine:favoritos')||'[]'));
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function caminho(v){if(!v)return '';const s=String(v).trim();if(/^https?:\/\//i.test(s))return s;return BASE+s.replace(/^\.\//,'').replace(/^\//,'');}
+function seguroLink(v){try{const u=new URL(v);return ['https:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function preco(v){const n=Number(v);return Number.isFinite(n)?n:0}
+function moeda(v){return preco(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function toast(msg){const old=document.querySelector('.vitrine-toast');if(old)old.remove();const el=document.createElement('div');el.className='vitrine-toast';el.textContent=msg;document.body.appendChild(el);setTimeout(()=>el.remove(),2200)}
+function scrollDestaques(q){$('destaques').scrollBy({left:q,behavior:'smooth'})}
+function iniciarAuto(){clearInterval(autoInterval);autoInterval=setInterval(()=>{if(!autoAtivo)return;const el=$('destaques');if(!el||el.scrollWidth<=el.clientWidth)return;if(el.scrollLeft+el.clientWidth>=el.scrollWidth-20)el.scrollTo({left:0,behavior:'smooth'});else el.scrollBy({left:320,behavior:'smooth'});},4200)}
+function toggleAuto(){autoAtivo=!autoAtivo;$('autoToggle').textContent=autoAtivo?'⏸️ PAUSAR':'▶️ GIRAR';if(autoAtivo)iniciarAuto()}
 async function carregar(){
-  try{
-    let r=await fetch('produtos.json',{cache:'no-store'}); if(!r.ok) r=await fetch('./produtos.json',{cache:'no-store'});
-    if(!r.ok) throw new Error('produtos.json não encontrado');
-    produtos=await r.json();
-    document.getElementById('status').style.display='none';
-    renderFiltros(); render(); iniciarAuto();
-  }catch(e){ document.getElementById('status').innerHTML=`<div class="bg-red-50 border p-4 rounded-xl text-sm">⚠️ ${e.message}</div>`; }
+ const status=$('status');
+ try{
+  const resp=await fetch('./produtos.json?v='+Date.now(),{cache:'no-store'});
+  if(!resp.ok)throw new Error('Não foi possível acessar produtos.json ('+resp.status+').');
+  const dados=await resp.json();
+  if(!Array.isArray(dados))throw new Error('O arquivo produtos.json precisa conter uma lista de produtos.');
+  produtos=dados.filter(p=>p&&typeof p==='object'&&p.nome);
+  status.style.display='none';
+  renderFiltros();render();iniciarAuto();
+ }catch(e){
+  status.innerHTML='<div class="max-w-xl mx-auto bg-white border border-red-200 rounded-2xl p-6 text-left"><strong class="text-red-600">Não foi possível carregar a vitrine.</strong><p class="text-sm text-gray-600 mt-2">'+esc(e.message)+'</p><button onclick="carregar()" class="mt-4 px-4 py-2 rounded-xl bg-black text-white text-sm font-bold">Tentar novamente</button></div>';
+  $('resultadoInfo').textContent='Produtos indisponíveis';
+ }
 }
-
 function renderFiltros(){
-  const cats=['Todos',...new Set(produtos.map(p=>p.categoria).filter(Boolean))];
-  document.getElementById('filtros').innerHTML=cats.map(c=>{
-    const cnt=c==='Todos'?produtos.length:produtos.filter(p=>p.categoria===c).length;
-    const act=c===categoriaAtiva?'bg-black text-white border-black':'bg-white border-gray-200';
-    return `<button onclick="filtrarCategoria('${c}')" class="whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold border ${act}">${c} <span class="opacity-60">${cnt}</span></button>`;
-  }).join('');
+ const cats=['Todos',...new Set(produtos.map(p=>p.categoria).filter(Boolean))];
+ $('filtros').innerHTML=cats.map(c=>'<button type="button" data-category="'+esc(c)+'" class="px-4 py-2 rounded-full text-xs font-bold border '+(c===categoriaAtiva?'bg-black text-white border-black':'bg-white border-gray-200')+'">'+esc(c)+' <span class="opacity-60">'+(c==='Todos'?produtos.length:produtos.filter(p=>p.categoria===c).length)+'</span></button>').join('');
 }
-function filtrarCategoria(c){ categoriaAtiva=c; renderFiltros(); render(); }
-document.getElementById('busca').addEventListener('input',render);
-
-function getFiltrados(){
-  const q=document.getElementById('busca').value.toLowerCase().trim();
-  return produtos.filter(p=>{
-    const cat=categoriaAtiva==='Todos'||p.categoria===categoriaAtiva;
-    if(!q) return cat;
-    return cat && `${p.nome} ${p.categoria} ${p.marca||''}`.toLowerCase().includes(q);
-  });
+function filtrados(){
+ const q=$('busca').value.toLocaleLowerCase('pt-BR').trim(),ord=$('ordenacao').value;
+ let arr=produtos.filter(p=>{
+  const cat=categoriaAtiva==='Todos'||p.categoria===categoriaAtiva;
+  const texto=[p.nome,p.categoria,p.marca,p.descricao].join(' ').toLocaleLowerCase('pt-BR');
+  return cat&&(!q||texto.includes(q))&&(!soFavoritos||favoritos.has(String(p.id)));
+ });
+ if(ord==='menor')arr.sort((a,b)=>preco(a.preco)-preco(b.preco));
+ if(ord==='maior')arr.sort((a,b)=>preco(b.preco)-preco(a.preco));
+ if(ord==='nome')arr.sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt-BR'));
+ if(ord==='desconto')arr.sort((a,b)=>(preco(b.preco_de)-preco(b.preco))-(preco(a.preco_de)-preco(a.preco)));
+ if(ord==='destaque')arr.sort((a,b)=>Number(!!b.destaque)-Number(!!a.destaque));
+ return arr;
 }
-
-function imgOnError(img){
-  const orig=img.getAttribute('data-original');
-  if(!img.dataset.tried && orig && orig.startsWith('imagens/')){
-    img.dataset.tried='1';
-    img.src='https://ivancm347.github.io/Minha-Vitrine/'+orig;
-    return;
-  }
-  img.style.display='none';
-  const fb=img.parentElement.querySelector('.img-fallback');
-  if(fb) fb.style.display='flex';
+function imgTag(p,extra=''){
+ const src=caminho(p.imagem);return '<img src="'+esc(src)+'" data-fallback="'+esc(src)+'" alt="'+esc(p.imagem_alt||p.nome)+'" loading="lazy" onerror="this.onerror=null;this.src=\'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect width=%22400%22 height=%22300%22 fill=%22%23f1f2f4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23949aa5%22 font-size=%2220%22%3ESem imagem%3C/text%3E%3C/svg%3E\';" class="'+extra+'">';
 }
-
-function formatPreco(v){ return 'R$ '+Number(v).toFixed(2).replace('.',','); }
-
+function videoUrl(p){return caminho(p.video_absoluto||p.video)}
 function cardDestaque(p){
-  const tv=!!(p.video&&String(p.video).trim());
-  return `<div onclick="${tv?`abrirVideo('${p.video}','${p.nome.replace(/'/g,'')}')`:''}" class="min-w-[260px] snap-start bg-white rounded-2xl border overflow-hidden flex flex-col ${tv?'cursor-pointer hover:shadow-md':''} transition">
-    <div class="relative"><img src="${p.imagem}" data-original="${p.imagem}" onerror="imgOnError(this)" class="w-full h-[160px] object-cover bg-gray-50"><div class="img-fallback hidden w-full h-[160px] bg-gray-100 items-center justify-center text-[10px]">SEM FOTO</div><span class="absolute top-2 left-2 bg-black text-white text-[9px] font-black px-2 py-1 rounded-full">${p.badge||p.categoria}</span>${tv?'<span class="absolute bottom-2 right-2 bg-black/80 text-white w-7 h-7 rounded-full flex items-center justify-center text-[11px]"><i class="fa-solid fa-play"></i></span>':''}</div>
-    <div class="p-3"><div class="text-[12px] font-bold line-clamp-2 leading-tight min-h-[36px]">${p.nome}</div><div class="text-green-600 font-black text-[13px] mt-1">${formatPreco(p.preco)}</div></div>
-  </div>`;
+ const video=!!p.video;
+ return '<article class="min-w-[250px] snap-start bg-white rounded-2xl border overflow-hidden flex flex-col">'+
+ '<div class="relative">'+imgTag(p,'w-full h-[155px] object-contain bg-gray-50 p-2')+(p.badge?'<span class="absolute top-2 left-2 bg-black text-white text-[9px] font-black px-2 py-1 rounded-full">'+esc(p.badge)+'</span>':'')+(video?'<button type="button" onclick="abrirVideoPorId(\''+esc(p.id)+'\')" class="absolute bottom-2 right-2 bg-black/85 text-white w-9 h-9 rounded-full"><i class="fa-solid fa-play"></i></button>':'')+'</div>'+
+ '<div class="p-3"><div class="text-xs font-bold line-clamp-2 min-h-[34px]">'+esc(p.nome)+'</div><div class="text-green-700 font-black text-sm mt-2">'+moeda(p.preco)+'</div></div></article>';
 }
-
 function card(p){
-  const tv=!!(p.video&&String(p.video).trim());
-  const shopee=p.links?.shopee, ml=p.links?.mercado_livre, tt=p.links?.tiktok;
-  const precoDe=(p.preco_de&&Number(p.preco_de)>0&&Number(p.preco_de)!==Number(p.preco))?`<span class="text-[11px] text-gray-400 line-through mr-2">${formatPreco(p.preco_de)}</span>`:'';
-  const msg=encodeURIComponent(`Olá Ivan, interesse no ${p.nome}`);
-  return `<div class="bg-white rounded-[18px] border overflow-hidden flex flex-col hover:shadow-lg transition">
-    <div class="relative bg-white ${tv?'cursor-pointer group':''}" ${tv?`onclick="abrirVideo('${p.video}','${p.nome.replace(/'/g,'')}')"` :''}>
-      <img src="${p.imagem}" data-original="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="imgOnError(this)" class="card-img w-full">
-      <div class="img-fallback hidden w-full h-[280px] bg-gray-50 items-center justify-center flex-col text-center p-4"><i class="fa-regular fa-image text-2xl text-gray-300 mb-2"></i><span class="text-[11px] font-bold">Imagem não encontrada</span><span class="text-[9px] opacity-60">${p.imagem}</span></div>
-      ${p.badge?`<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-black px-3 py-1 rounded-full shadow-sm">${p.badge}</span>`:''}
-      ${tv?`<div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition flex items-center justify-center"><div class="w-14 h-14 bg-white/95 rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition"><i class="fa-solid fa-play ml-1"></i></div></div>`:''}
-    </div>
-    <div class="p-4 flex-1 flex flex-col">
-      <div class="text-[11px] text-gray-500 mb-1 flex items-center gap-1"><i class="fa-solid fa-star text-amber-400"></i> ${p.avaliacao||4.8} • ${p.categoria}</div>
-      <h3 class="font-bold text-[13.5px] leading-tight line-clamp-2 min-h-[38px]">${p.nome}</h3>
-      <div class="mt-2">${precoDe}<span class="font-black text-green-600 text-[15px]">${formatPreco(p.preco)}</span></div>
-      <p class="text-[11px] text-gray-500 line-clamp-2 mt-2 min-h-[32px]">${p.descricao||''}</p>
-      ${tv?`<button onclick="abrirVideo('${p.video}','${p.nome.replace(/'/g,'')}')" class="mt-3 w-full text-[11px] border border-gray-200 rounded-full py-2 font-bold hover:bg-black hover:text-white transition"><i class="fa-solid fa-play mr-1"></i> Ver vídeo</button>`:''}
-      <div class="mt-3 grid gap-2">
-        ${shopee?`<a href="${shopee}" target="_blank" class="text-center bg-[#EE4D2D] text-white text-[11px] font-black py-2.5 rounded-full hover:brightness-110">Shopee</a>`:''}
-        ${ml?`<a href="${ml}" target="_blank" class="text-center bg-[#FFE600] text-black text-[11px] font-black py-2.5 rounded-full">Mercado Livre</a>`:''}
-        ${tt?`<a href="${tt}" target="_blank" class="text-center bg-black text-white text-[11px] font-black py-2.5 rounded-full">TikTok Shop</a>`:''}
-        <a href="https://wa.me/${p.whatsapp||'5511976983978'}?text=${msg}" target="_blank" class="text-center bg-[#25D366] text-white text-[11px] font-black py-2.5 rounded-full">WhatsApp</a>
-      </div>
-    </div>
-  </div>`;
+ const links=p.links||{},buttons=[
+  ['shopee',links.shopee,'Shopee','bg-[#EE4D2D] text-white'],
+  ['mercado_livre',links.mercado_livre,'Mercado Livre','bg-[#FFE600] text-black'],
+  ['tiktok',links.tiktok,'TikTok Shop','bg-black text-white']
+ ].filter(x=>seguroLink(x[1]));
+ const old=preco(p.preco_de),now=preco(p.preco),discount=old>now&&old>0?Math.round((old-now)/old*100):0;
+ const msg=encodeURIComponent('Olá Ivan, gostaria de saber mais sobre: '+p.nome);
+ return '<article class="bg-white rounded-[20px] border overflow-hidden flex flex-col">'+
+ '<div class="relative bg-white">'+imgTag(p,'card-img w-full')+
+ (p.badge?'<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-black px-3 py-1 rounded-full">'+esc(p.badge)+'</span>':'')+
+ (discount?'<span class="absolute top-3 right-3 bg-[#f05a28] text-white text-[10px] font-black px-2.5 py-1 rounded-full">-'+discount+'%</span>':'')+
+ '<button class="vitrine-fav '+(favoritos.has(String(p.id))?'active':'')+'" type="button" aria-label="Favoritar" onclick="alternarFavorito(\''+esc(p.id)+'\')"><i class="'+(favoritos.has(String(p.id))?'fa-solid':'fa-regular')+' fa-heart"></i></button></div>'+
+ '<div class="p-4 flex-1 flex flex-col"><div class="text-[11px] text-gray-500 mb-1"><i class="fa-solid fa-star text-amber-400"></i> '+esc(p.avaliacao||'—')+' · '+esc(p.categoria||'')+'</div>'+
+ '<h3 class="font-bold line-clamp-2">'+esc(p.nome)+'</h3>'+
+ '<div class="mt-2">'+(old>now?'<span class="text-xs text-gray-400 line-through mr-2">'+moeda(old)+'</span>':'')+'<span class="font-black text-green-700">'+moeda(now)+'</span></div>'+
+ '<p class="text-xs text-gray-500 line-clamp-2 mt-2 min-h-[34px]">'+esc(p.descricao||'')+'</p>'+
+ (p.video?'<button type="button" onclick="abrirVideoPorId(\''+esc(p.id)+'\')" class="mt-3 w-full border border-gray-200 rounded-xl py-2 text-xs font-bold"><i class="fa-solid fa-play mr-1"></i> Assistir ao vídeo</button>':'')+
+ '<div class="mt-3 grid gap-2">'+buttons.map(b=>'<a href="'+esc(seguroLink(b[1]))+'" target="_blank" rel="noopener noreferrer" class="text-center '+b[3]+' text-[11px] font-black py-2.5 rounded-xl">'+b[2]+'</a>').join('')+
+ '<a href="https://wa.me/'+esc(String(p.whatsapp||'5511976983978').replace(/[^0-9]/g,''))+'?text='+msg+'" target="_blank" rel="noopener noreferrer" class="text-center bg-[#25D366] text-white text-[11px] font-black py-2.5 rounded-xl"><i class="fa-brands fa-whatsapp mr-1"></i> Tirar dúvidas</a></div></div></article>';
 }
-
 function render(){
-  const lista=getFiltrados();
-  const dest=document.getElementById('destaques');
-  const sec=document.getElementById('destaques-section');
-  const desta=lista.filter(p=>p.destaque);
-  if(desta.length){ sec.classList.remove('hidden'); dest.innerHTML=desta.map(cardDestaque).join(''); } else sec.classList.add('hidden');
-  document.getElementById('grid').innerHTML=lista.map(card).join('');
+ const arr=filtrados(),desta=arr.filter(p=>p.destaque);
+ $('resultadoInfo').textContent=arr.length+' '+(arr.length===1?'produto encontrado':'produtos encontrados')+(soFavoritos?' · favoritos':'');
+ $('favoritosToggle').classList.toggle('text-red-600',soFavoritos);
+ $('grid').innerHTML=arr.length?arr.map(card).join(''):'<div class="vitrine-empty"><i class="fa-solid fa-magnifying-glass text-3xl mb-3"></i><h3 class="font-black text-base">Nenhum produto encontrado</h3><p class="text-sm mt-2">Tente outro termo ou limpe os filtros.</p><button onclick="limparFiltros()" class="mt-4 bg-black text-white px-4 py-2 rounded-xl text-xs font-bold">Limpar filtros</button></div>';
+ if(desta.length){$('destaques-section').classList.remove('hidden');$('destaques').innerHTML=desta.map(cardDestaque).join('')}else $('destaques-section').classList.add('hidden');
 }
-
+function alternarFavorito(id){id=String(id);favoritos.has(id)?favoritos.delete(id):favoritos.add(id);localStorage.setItem('minhaVitrine:favoritos',JSON.stringify([...favoritos]));render();toast(favoritos.has(id)?'Adicionado aos favoritos':'Removido dos favoritos')}
+function limparFiltros(){categoriaAtiva='Todos';soFavoritos=false;$('busca').value='';$('ordenacao').value='destaque';renderFiltros();render()}
+function abrirVideoPorId(id){const p=produtos.find(x=>String(x.id)===String(id));if(p)abrirVideo(videoUrl(p),p.nome)}
 function abrirVideo(src,titulo){
-  const m=document.getElementById('videoModal'), v=document.getElementById('modalVideo');
-  document.getElementById('videoTitle').textContent=titulo||'Vídeo';
-  v.src=src; v.onerror=()=>{ if(!v.dataset.tried){ v.dataset.tried='1'; v.src='https://ivancm347.github.io/Minha-Vitrine/'+src; } };
-  m.classList.remove('hidden'); m.classList.add('flex'); v.play().catch(()=>{});
+ const modal=$('videoModal'),v=$('modalVideo');$('videoTitle').textContent=titulo||'Vídeo';v.onerror=()=>{$('videoTitle').textContent='Vídeo indisponível';};v.src=caminho(src);modal.classList.remove('hidden');modal.classList.add('flex');v.play().catch(()=>{});
 }
-function fecharVideo(){ const m=document.getElementById('videoModal'), v=document.getElementById('modalVideo'); v.pause(); v.removeAttribute('src'); v.load(); m.classList.add('hidden'); m.classList.remove('flex'); }
-document.getElementById('videoModal').addEventListener('click',e=>{ if(e.target.id==='videoModal') fecharVideo(); });
+function fecharVideo(){const m=$('videoModal'),v=$('modalVideo');v.pause();v.removeAttribute('src');v.load();m.classList.add('hidden');m.classList.remove('flex')}
+$('busca').addEventListener('input',render);
+$('ordenacao').addEventListener('change',render);
+$('filtros').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;categoriaAtiva=b.dataset.category;renderFiltros();render()});
+$('favoritosToggle').addEventListener('click',()=>{soFavoritos=!soFavoritos;render()});
+$('videoModal').addEventListener('click',e=>{if(e.target.id==='videoModal')fecharVideo()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharVideo()});
 carregar();
 </script>
 </body>
